@@ -26,7 +26,7 @@
 
 
   <!-- ==================================== -->
-  <!-- COMIENZA TODOS LOS TALLERES -->
+  <!-- COMIENZA TODOS LOS TALLERES PAGINA INDEX-->
   <!-- ==================================== -->
 
   <div class="contenido-programa">
