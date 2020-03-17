@@ -14,6 +14,7 @@
         echo $e->getMessage();
     }
     ?>
+    
     <section class="contenedor seccion invitados">
 
         <div class="grid">

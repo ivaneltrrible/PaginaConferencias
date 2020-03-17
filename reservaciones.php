@@ -4,19 +4,19 @@
   =======================================================================-->
 <section class="seccion contenedor">
     <h2>Registro</h2>
-    <form class="registro" id="registro" action="" method="post">
+    <form class="registro" id="registro" action="validar_registro.php" method="post">
         <div id="datos_usuarios" class="caja registro clearfix">
             <div class="campo">
                 <label for="nombre">Nombre:</label>
-                <input type="text" name="nombre" id="nombre" placeholder="Tu Nombre">
+                <input type="text" name="nombre" id="nombre" placeholder="Tu Nombre" >
             </div>
             <div class="campo">
                 <label for="apellido">Apellido:</label>
-                <input type="text" name="apellido" id="apellido" placeholder="Tu Apellido">
+                <input type="text" name="apellido" id="apellido" placeholder="Tu Apellido" >
             </div>
             <div class="campo">
                 <label for="email">Email:</label>
-                <input type="email" name="email" id="email" placeholder="Tu Email">
+                <input type="email" name="email" id="email" placeholder="Tu Email" >
             </div>
             <div id="error"></div>
         </div>
@@ -33,7 +33,7 @@
                     <p><i class="fas fa-check"></i>Todos los talleres</p>
                     <div class="order">
                         <label for="paseDia">Boletos Deseados</label>
-                        <input type="number" name="paseDia" id="paseDia" placeholder="0" min="0" size="3">
+                        <input type="number" name="boletos[]" id="paseDia" placeholder="0" min="0" size="3">
                     </div>
 
                 </div>
@@ -45,7 +45,7 @@
                     <p><i class="fas fa-check"></i>Todos los talleres</p>
                     <div class="order">
                         <label for="paseDiario">Boletos Deseados</label>
-                        <input type="number" name="paseDiario" id="paseDiario" placeholder="0" min="0" size="3">
+                        <input type="number" name="boletos[]" id="paseDiario" placeholder="0" min="0" size="3">
                     </div>
                 </div>
                 <div class="oferta">
@@ -56,7 +56,7 @@
                     <p><i class="fas fa-check"></i>Todos los talleres</p>
                     <div class="order">
                         <label for="paseDosDias">Boletos Deseados</label>
-                        <input type="number" name="paseDosDias" id="paseDosDias" placeholder="0" min="0" size="3">
+                        <input type="number" name="boletos[]" id="paseDosDias" placeholder="0" min="0" size="3">
                     </div>
                 </div>
             </div>
@@ -147,20 +147,20 @@
                 <div class="extras">
                     <div class="orden">
                         <label for="camisa_evento">Camisa del Evento $10 <small>(promocion 7% dto.)</small></label>
-                        <input type="number" name="" id="camisa_evento" min="0" placeholder="0" max="3">
+                        <input type="number" name="pedido_camisas" id="camisa_evento" min="0" placeholder="0" max="3" name="pedido_camisas">
                     </div>
                     <div class="orden">
                         <label for="etiquetas">Paquete de 10 etiquetas $10 <small>(HTML5, CSS3, JavaScript,
                                 Chrome)</small></label>
-                        <input type="number" name="" id="etiquetas" min="0" placeholder="0" max="3">
+                        <input type="number" name="pedido_etiquetas" id="etiquetas" min="0" placeholder="0" max="3" name="pedido_etiquetas">
                     </div>
                     <div class="orden">
                         <label for="regalo">Seleccione un regalo</label>
-                        <select name="" id="regalo" required>
+                        <select name="regalo" id="regalo" required>
                             <option value="">-- Seleccione un regalo --</option>
-                            <option value="ETI">Etiquetas</option>
-                            <option value="PUL">Pulseras</option>
-                            <option value="PLU">Plumas</option>
+                            <option value="2">Etiquetas</option>
+                            <option value="1">Pulseras</option>
+                            <option value="3">Plumas</option>
                         </select>
                     </div>
                     <input type="button" class="boton" id="calcular" value="Calcular">
@@ -175,7 +175,9 @@
                     <div id="suma-total">
 
                     </div>
-                    <input type="submit" class="boton" value="Pagar" id="btnRegistro">
+                    <!-- Campo Oculto para Cantidad Total -->
+                    <input type="hidden" name="total_pedido" id="total_pedido">
+                    <input type="submit" class="boton" value="Pagar" name="submit" id="btnRegistro">
                 </div>
                 <!--Total-->
 

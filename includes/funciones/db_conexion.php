@@ -1,4 +1,5 @@
 <?php
+    // // $ip = $_POST['parametroIP'];
     $conn = new mysqli('localhost', 'root', '', 'gdlwebcamp');
 
     

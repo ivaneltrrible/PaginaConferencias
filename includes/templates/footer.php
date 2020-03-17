@@ -46,7 +46,7 @@
 <script src="js/vendor/jquery.lettering.js"></script>
 <?php
 $archivo = basename($_SERVER['PHP_SELF'], ".php");
-if ($archivo == 'invitados' || $pagina == 'index') {
+if ($archivo == 'invitados' || $archivo == 'index') {
   echo '<script src="js/vendor/jquery.colorbox.js"></script>';
 } elseif ($archivo == 'conferencia') {
   echo '<script src="js/vendor/lightbox.js"></script>';
@@ -69,6 +69,7 @@ if ($archivo == 'invitados' || $pagina == 'index') {
   ga('set', 'transport', 'beacon');
   ga('send', 'pageview')
 </script>
+<script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us19.list-manage.com","uuid":"df0bf872b2f7d445bc8b5d149","lid":"4898ee43ab","uniqueMethods":true}) })</script>
 <!-- <script src="https://www.google-analytics.com/analytics.js" async></script> -->
 </body>
 

@@ -112,8 +112,8 @@
         ?>
         <?php
         do {
-          //traes toda la consulta realizada con store_result
-          $resultado = $conn->store_result();
+          //traes toda la consulta realizada con store_result (puse el parametro 3 para que no falle)
+          $resultado = $conn->store_result(3);
           //Conviertes el resultado en un formato de array asociativo para leer los datos mejor
           $row = $resultado->fetch_all(MYSQLI_ASSOC);   ?>
           <?php $i = 0; ?>

@@ -23,7 +23,20 @@
     //Extras
     let camisas = document.getElementById("camisa_evento");
     let etiquetas = document.getElementById("etiquetas");
+    if (botonRegistro) {
+      botonRegistro.disabled = true;
+    }
 
+    // // let botonNotificar = $("#btnRegistro").css("opacity");
+
+    // // console.log(botonNotificar);
+    // // if (botonNotificar == 0.5) {
+    // //   $("#btnRegistro").mouseover(function() {
+    // //     console.log(
+    // //       "tienes que volver a calcular los montos cada vez que cambies un producto"
+    // //     );
+    // //   });
+    // // }
     // == Eventos == //
     if (document.getElementById("calcular")) {
       calcular.addEventListener("click", calcularMontos);
@@ -37,6 +50,18 @@
       email.addEventListener("blur", validarEmail);
 
       //Funciones
+
+      //funcion si cambia de boletos, producto etc tenga que volver a calcular monto a pagar
+      //para que se habilite boton de pagar
+      $(
+        "#paseDiario, #paseDosDias, #paseDia, #camisa_evento, #etiquetas"
+      ).change(function() {
+        // // e.preventDefault();
+        botonRegistro.disabled = true;
+      });
+
+      //Funcion para avisar a usuario que tiene que volver a calcular los montos en cada cambio de producto final
+
       function validarDatos() {
         if (this.value == "") {
           error.style.display = "block";
@@ -124,6 +149,8 @@
           }
           //Imprime en total toda la suma y solo acepta 2 decimales
           sumaTotal.innerHTML = "$ " + totalPagar.toFixed(2);
+          botonRegistro.disabled = false;
+          document.getElementById('total_pedido').value = totalPagar;
         }
       } //Funcion de Calcacular Montos Termina ==== //
 
@@ -170,12 +197,20 @@ $(function() {
   $(".nombre-sitio").lettering();
 
   //======================================================================
-  //? == Resaltar en que archivo se encuentra el usuario ACTIVO en el menu 
+  //? == Resaltar en que archivo se encuentra el usuario ACTIVO en el menu
   //======================================================================
-  $('body.conferencia .navegacion-principal a:contains("Conferencia")').addClass('activoPagina');
-  $('body.calendario .navegacion-principal a:contains("Calendario")').addClass('activoPagina');
-  $('body.invitados .navegacion-principal a:contains("Invitados")').addClass('activoPagina');
-  $('body.reservaciones .navegacion-principal a:contains("Reservaciones")').addClass('activoPagina');
+  $(
+    'body.conferencia .navegacion-principal a:contains("Conferencia")'
+  ).addClass("activoPagina");
+  $('body.calendario .navegacion-principal a:contains("Calendario")').addClass(
+    "activoPagina"
+  );
+  $('body.invitados .navegacion-principal a:contains("Invitados")').addClass(
+    "activoPagina"
+  );
+  $(
+    'body.reservaciones .navegacion-principal a:contains("Reservaciones")'
+  ).addClass("activoPagina");
 
   //======================================================================
   // MENU FIJO (ESTATICO)
@@ -270,21 +305,25 @@ $(function() {
   //?======================================================================
   // ? CODIGO DE PLUGIN COLORBOX
   //?======================================================================
+
   $(".invitados-info").colorbox({ inline: true, width: "50%" });
 
   //TODO:   Codigo de la API Leaflet MAPS ===========================================
   // Se puso el codigo del mapa aqui porque ocacionaba errores al no encontrar el Contenedor MAP
-  var map = L.map("map").setView([20.675559, -103.365983], 20);
+  let mapa = $("#map");
+  if (mapa) {
+    var map = L.map("map").setView([20.675559, -103.365983], 20);
 
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-  L.marker([20.675559, -103.365983])
-    .addTo(map)
-    .bindPopup("Tu estas aqui.<br> Lucioboss.")
-    .openPopup()
-    .bindTooltip("Visitanos")
-    .openTooltip();
+    L.marker([20.675559, -103.365983])
+      .addTo(map)
+      .bindPopup("Tu estas aqui.<br> Lucioboss.")
+      .openPopup()
+      .bindTooltip("Visitanos")
+      .openTooltip();
+  }
 });
