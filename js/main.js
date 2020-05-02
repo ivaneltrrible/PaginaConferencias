@@ -110,7 +110,7 @@
             boletosDosDias * 45 +
             boletoDiario * 50 +
             cantidadCamisas * 10 * 0.93 +
-            cantidadEtiquetas * 10;
+            cantidadEtiquetas * 2;
 
           //Arreglo de lista de productos ===
           let listadoProductos = [];
