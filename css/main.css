@@ -132,6 +132,7 @@ h2 {
   font-size: 3rem;
 }
 
+
 h2::after {
   content: '';
   margin: 0 auto;
@@ -142,7 +143,12 @@ h2::after {
   display: block;
   /* background-color: #ce2e02; */
 }
-
+.swal2-title{
+  font-size: 3rem!important;
+}
+.swal2-header h2{
+  display: block!important;
+}
 h3 {
   color: #fe4918;
   font-size: 2.2rem;
@@ -1444,6 +1450,24 @@ div.dia i {
 .cboxElement p,
 .cboxElement h2 {
   padding: 10px;
+}
+
+/*? ============== Estilo de Div que contiene confirmacion de pago ==================== */
+.resultado{
+  text-align: center;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  max-width: 600px;
+ 
+ 
+}
+.correcto{
+  background-color: rgb(77, 204, 77);
+}
+div.error{
+  background-color: rgb(197, 58, 58);
 }
 /* ==========================================================================
    Helper classes

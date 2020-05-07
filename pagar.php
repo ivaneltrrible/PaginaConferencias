@@ -27,6 +27,7 @@ if (isset($_POST['submit'])) :
     $total = $_POST['total_pedido'];
     $fecha = date('Y-m-d H:i:s');
     $boletos = $_POST['boletos'];
+  
     $numero_boletos = $boletos;  // variable para no utilizar $boletos y asi no confundir o cambiar datos
 
     $pedido_extra = $_POST['pedido_extra'];  // variable para reutilizar etiquetas y camisas juntas 
@@ -44,10 +45,7 @@ if (isset($_POST['submit'])) :
     };
     $registro = eventos_json($eventos);
 
-
-    // echo '<pre>' ;
-    //  var_dump($_POST) ;
-    // echo '</pre>' ;
+   
 
     try {
         require_once 'includes/funciones/db_conexion.php';
@@ -151,8 +149,8 @@ $transaccion->setAmount($cantidad)
 ////// REDIRECCIONAR URLS DESPUES DEL APROVADO EL PAGO O QUE FALLA EL PAGO HACIA QUE PAGINA REDIRECCIONAR////
 $redireccionar = new RedirectUrls();
 //URL_SITIO esta declarada en config.php como constante para saber el sitio web a redireccionar
-$redireccionar->setReturnUrl(URL_SITIO . "pago_finalizado.php?exito=true&precio={$total}&id_pago{$ID_registrado}")
-    ->setCancelUrl(URL_SITIO . "pago_finalizado.php?exito=false&id_pago{$ID_registrado}");
+$redireccionar->setReturnUrl(URL_SITIO . "pago_finalizado.php?precio={$total}&id_pago={$ID_registrado}")
+    ->setCancelUrl(URL_SITIO . "pago_finalizado.php?id_pago={$ID_registrado}");
 
 
 
@@ -162,10 +160,6 @@ $pago->setIntent("sale")
     ->setPayer($compra)
     ->setTransactions(array($transaccion))
     ->setRedirectUrls($redireccionar);
-
-echo '<pre>' ;
- var_dump($pago->getTransactions()) ;
-echo '</pre>' ;
 
 try {
     $pago->create($apiContenxt);

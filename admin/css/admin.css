@@ -1,0 +1,11 @@
+/* estilo de Nombre en navegacion y online */
+.user-panel {
+    height: 60px;
+}
+.user-panel>.info{
+    position: relative;
+    left: 10px;
+}
+.skin-blue .sidebar-menu>li.header{
+    color: #1b99e2;
+}

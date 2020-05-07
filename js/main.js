@@ -1,8 +1,8 @@
 //EFI
-(function() {
+(function () {
   "use strict";
 
-  document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function () {
     //Campos datos usuario
     let nombre = document.querySelector("#nombre");
     let apellido = document.querySelector("#apellido");
@@ -49,13 +49,15 @@
       apellido.addEventListener("blur", validarDatos);
       email.addEventListener("blur", validarEmail);
 
+    
+
       //Funciones
 
       //funcion si cambia de boletos, producto etc tenga que volver a calcular monto a pagar
       //para que se habilite boton de pagar
       $(
         "#paseDiario, #paseDosDias, #paseDia, #camisa_evento, #etiquetas"
-      ).change(function() {
+      ).change(function () {
         // // e.preventDefault();
         botonRegistro.disabled = true;
       });
@@ -150,7 +152,7 @@
           //Imprime en total toda la suma y solo acepta 2 decimales
           sumaTotal.innerHTML = "$ " + totalPagar.toFixed(2);
           botonRegistro.disabled = false;
-          document.getElementById('total_pedido').value = totalPagar;
+          document.getElementById("total_pedido").value = totalPagar;
         }
       } //Funcion de Calcacular Montos Termina ==== //
 
@@ -190,7 +192,7 @@
   }); //Dom Contenet Load Termina //
 })();
 
-$(function() {
+$(function () {
   //======================================================================
   // Plugin Modificador Texto Lettering H1
   //======================================================================
@@ -220,14 +222,14 @@ $(function() {
   let alturaBarra = $(".barra").innerHeight();
   console.log(alturaBarra);
   // console.log(windowHeight);
-  $(window).scroll(function() {
+  $(window).scroll(function () {
     let scroll = $(window).scrollTop();
     // console.log(scroll);
 
     if (scroll > windowHeight) {
       $(".barra").addClass("fixed");
       $("body").css({
-        "margin-top": alturaBarra + "px"
+        "margin-top": alturaBarra + "px",
       });
 
       // console.log('ya pasaste la altura')
@@ -235,14 +237,14 @@ $(function() {
       $(".barra").removeClass("fixed");
       // console.log('todavia no pasas altura')
       $("body").css({
-        "margin-top": "0px"
+        "margin-top": "0px",
       });
     }
   });
   //?======================================================================
   //? Menu Responsive (HAMBUERGUESA)
   //?================================================
-  $(".menu-movil").on("click", function() {
+  $(".menu-movil").on("click", function () {
     $("nav.navegacion-principal").slideToggle();
   });
 
@@ -251,7 +253,7 @@ $(function() {
   $("div#seminario").show();
   $(".menu-programa a:first").addClass("activo");
 
-  $(".menu-programa a").click(function() {
+  $(".menu-programa a").click(function () {
     $(".menu-programa a").removeClass("activo");
     $(this).addClass("activo");
     $("div.ocultar").hide();
@@ -266,28 +268,28 @@ $(function() {
   //? CONTADOR DE NUMEROS PLUGIN JQUERY ANIMATE NUMBER
   //?======================================================================
 
-  $(".contenido-tiempo").mouseenter(function() {
+  $(".contenido-tiempo").mouseenter(function () {
     $(".contenido-tiempo div:nth-child(1) p:first").animateNumber(
       {
-        number: 6
+        number: 6,
       },
       1200
     );
     $(".contenido-tiempo div:nth-child(2) p:first").animateNumber(
       {
-        number: 15
+        number: 15,
       },
       1200
     );
     $(".contenido-tiempo div:nth-child(3) p:first").animateNumber(
       {
-        number: 3
+        number: 3,
       },
       2000
     );
     $(".contenido-tiempo div:nth-child(4) p:first").animateNumber(
       {
-        number: 9
+        number: 9,
       },
       1500
     );
@@ -296,7 +298,7 @@ $(function() {
   // ?COUNTDOWN CONTADOR QUE VA DISMINUYENDO // CONTADOR DE FOOTER SIN FONDO(HTML)
   //?======================================================================
 
-  $(".contenido-contador2").countdown("2020/01/13 09:00:00", function(event) {
+  $(".contenido-contador2").countdown("2020/01/13 09:00:00", function (event) {
     $("#dias").html(event.strftime("%D"));
     $("#horas").html(event.strftime("%H"));
     $("#minutos").html(event.strftime("%M"));
@@ -316,7 +318,7 @@ $(function() {
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
 
     L.marker([20.675559, -103.365983])
@@ -327,3 +329,17 @@ $(function() {
       .openTooltip();
   }
 });
+
+
+  //?======================================================================
+  // ? CODIGO DE PLUGIN SWEETALERT
+  //?======================================================================
+  correcto = document.querySelector(".correcto");
+  if (correcto) {
+    console.log("funciona");
+    Swal.fire({
+      icon: "success",
+      title: "Pagado",
+      text: "El Pago si hizo de manera exitosa",
+    });
+  }

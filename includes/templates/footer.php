@@ -56,7 +56,9 @@ if ($archivo == 'invitados' || $archivo == 'index') {
 
 <script src="js/vendor/jquery.countdown.js"></script>
 <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+<script src="js/sweetalert2.all.min.js"></script>
 <script src="js/main.js"></script>
+
 
 <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
 <script>
