@@ -7,7 +7,8 @@
 </footer>
 </div>
 <!-- ./wrapper -->
-
+<!-- SWEER ALERT  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.12/dist/sweetalert2.min.js"></script>
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -20,6 +21,8 @@
 <script src="js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="js/demo.js"></script>
+<!-- Mi Script -->
+<script src="js/admin-ajax.js"></script>
 <script>
     $(document).ready(function() {
         $('.sidebar-menu').tree()

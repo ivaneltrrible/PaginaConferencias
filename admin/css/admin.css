@@ -9,3 +9,9 @@
 .skin-blue .sidebar-menu>li.header{
     color: #1b99e2;
 }
+
+
+/* SWEET ALERT mensaje pequeño */
+.swal2-popup {
+    font-size: 1.6rem!important;
+}

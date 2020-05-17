@@ -58,7 +58,7 @@
            <ul class="treeview-menu">
              <li><a href="../layout/top-nav.html"><i class="fa fa-list-ul" aria-hidden="true"></i>
                  Ver Todos..</a></li>
-             <li><a href="../layout/boxed.html"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar evento</a></li>
+             <li><a href="../layout/boxed.html"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar Categoria</a></li>
 
            </ul>
          </li>
@@ -72,7 +72,7 @@
            <ul class="treeview-menu">
              <li><a href="../layout/top-nav.html"><i class="fa fa-list-ul" aria-hidden="true"></i>
                  Ver Todos..</a></li>
-             <li><a href="../layout/boxed.html"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar evento</a></li>
+             <li><a href="../layout/boxed.html"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar a un usuario</a></li>
 
            </ul>
          </li>
@@ -117,7 +117,7 @@
            <ul class="treeview-menu">
              <li><a href="../layout/top-nav.html"><i class="fa fa-list-ul" aria-hidden="true"></i>
                  Ver Todos..</a></li>
-             <li><a href="../layout/boxed.html"><i class="fa fa-user-plus" aria-hidden="true"></i>
+             <li><a href="crear-cuenta.php"><i class="fa fa-user-plus" aria-hidden="true"></i>
                  Agregar administrador</a></li>
 
            </ul>

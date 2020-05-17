@@ -1,6 +1,11 @@
 <?php
     // // $ip = $_POST['parametroIP'];
-    $conn = new mysqli('localhost', 'root', '', 'gdlwebcamp');
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASSWORD', '');
+    define('DB_NAME', 'gdlwebcamp');
+    
+    $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
     
     //?? ========= CODIGO PARA QUE FUNCIONE LAS 'Ñ' Y LOS ACENTOS =========== //
