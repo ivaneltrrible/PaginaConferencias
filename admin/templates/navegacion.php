@@ -115,7 +115,7 @@
 
            </a>
            <ul class="treeview-menu">
-             <li><a href="../layout/top-nav.html"><i class="fa fa-list-ul" aria-hidden="true"></i>
+             <li><a href="lista-admins.php"><i class="fa fa-list-ul" aria-hidden="true"></i>
                  Ver Todos..</a></li>
              <li><a href="crear-cuenta.php"><i class="fa fa-user-plus" aria-hidden="true"></i>
                  Agregar administrador</a></li>

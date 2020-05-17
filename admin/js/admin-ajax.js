@@ -65,7 +65,7 @@ $(document).ready(function () {
       success: function (data) {
         
         var resultado = data;
-        
+
         /* ## VER QUE MANDA EL SERVIDOR ## */
         // console.log(resultado);
 
@@ -76,6 +76,9 @@ $(document).ready(function () {
                 icon: "success",
                 text: "Bienvenid@ "+ resultado.nombre_admin
               });
+              setTimeout(() => {
+                  window.location.href = "area-admin.php";
+              }, 3000);
         }else{
         /* ## INGRESO EXITOSO AL SISTEMA ERRONEO ## */
             Swal.fire({

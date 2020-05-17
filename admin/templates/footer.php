@@ -13,6 +13,9 @@
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- ## DATA TABLES ## -->
+<script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -23,11 +26,8 @@
 <script src="js/demo.js"></script>
 <!-- Mi Script -->
 <script src="js/admin-ajax.js"></script>
-<script>
-    $(document).ready(function() {
-        $('.sidebar-menu').tree()
-    })
-</script>
+<!-- ## SE AGREGA DATATABLE PARA FUNCIONES DE LAS TABLAS ### -->
+<script src="js/app.js"></script>
 </body>
 
 </html>

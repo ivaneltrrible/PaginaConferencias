@@ -1,6 +1,15 @@
 <?php
 include_once 'templates/header.php';
 
+/* ### SE DESTRUYE LA SESSION SI SE OPRIME EL BOTON CERRAR SESION DESDE LA BARRA ### */
+session_start();
+if(isset($_GET['cerrar_sesion'])){
+  $cerrar_sesion = $_GET['cerrar_sesion'];
+  if ($cerrar_sesion) {
+    session_destroy();
+  } 
+}
+
 ?>
 
 <body class="hold-transition login-page">
@@ -22,7 +31,7 @@ include_once 'templates/header.php';
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <div class="row">
-         
+
           <!-- /.col -->
           <div class="col-xs-12">
             <input type="hidden" name="login-admin" value="1">
@@ -30,7 +39,7 @@ include_once 'templates/header.php';
           </div>
           <!-- /.col -->
         </div>
-      </form>   
+      </form>
     </div>
     <!-- /.login-box-body -->
   </div>
