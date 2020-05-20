@@ -21,7 +21,7 @@ if(isset($_GET['cerrar_sesion'])){
     <div class="login-box-body">
       <p class="login-box-msg">INGRESO AL SISTEMA</p>
 
-      <form method="post" id="login-admin" name="login-admin-form" action="insertar-admin.php">
+      <form method="post" id="login-admin" name="login-admin-form" action="modelo-admin.php">
         <div class="form-group has-feedback">
           <input type="text" class="form-control" placeholder="Usuario" name="usuario">
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -34,7 +34,7 @@ if(isset($_GET['cerrar_sesion'])){
 
           <!-- /.col -->
           <div class="col-xs-12">
-            <input type="hidden" name="login-admin" value="1">
+            <input type="hidden" name="registro" value="logueo">
             <button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar Sesion</button>
           </div>
           <!-- /.col -->

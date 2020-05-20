@@ -3,7 +3,9 @@
 //  var_dump($_POST) ;
 // echo '</pre>' ;
 
-if (isset($_POST['agregar-admin'])) {
+
+/* ################## INSERTAR ADMIN A DB PERO PRIMERO SE CONSULTA QUE NO EXISTA ######### */
+if ($_POST['registro'] == 'crear') {
 
     /* Datos que se envian desde el formulario Administrador */
     $usuario = filter_var($_POST['usuario'], FILTER_SANITIZE_STRING);
@@ -17,7 +19,7 @@ if (isset($_POST['agregar-admin'])) {
     $password_hash = password_hash($password, PASSWORD_BCRYPT, $opciones);
 
     include_once '../../PaginaConferencias/includes/funciones/db_conexion.php';
-    /* se insertan datos en la base de datos */
+    /* se consulta datos en la base de datos */
     $query = $conn->prepare("SELECT * FROM administradores WHERE usuario = ?");
     $query->bind_param("s", $usuario);
     $query->execute();
@@ -57,7 +59,65 @@ if (isset($_POST['agregar-admin'])) {
 }
 
 
-if (isset($_POST['login-admin'])) {
+/* ###################### EDITAR USUARIO ADMIN #################### */
+if ($_POST['registro'] == 'actualizar') {
+
+    /* Datos que se envian desde el formulario Administrador */
+    $usuario = filter_var($_POST['usuario'], FILTER_SANITIZE_STRING);
+    $nombre = filter_var($_POST['nombre'], FILTER_SANITIZE_STRING);
+    $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+    $id_editar = filter_var($_POST['editar-admin'], FILTER_SANITIZE_NUMBER_INT);
+
+    
+         /* PASSWORDS ENCRIPTADOS  */
+    $opciones = array(
+        'cost' => 12
+    );
+    $password_hash = password_hash($password, PASSWORD_BCRYPT, $opciones);
+
+    include_once '../../PaginaConferencias/includes/funciones/db_conexion.php';
+    /* se consulta datos en la base de datos */
+    $query = $conn->prepare("SELECT * FROM administradores WHERE usuario = ?");
+    $query->bind_param("s", $usuario);
+    $query->execute();
+    $query->store_result();
+    $rows = $query->num_rows;
+
+    if ($rows == 0) {
+        try {
+
+
+            $stmt = $conn->prepare("UPDATE administradores SET usuario = ?, nombre = ?, password = ?");
+            $stmt->bind_param("sss", $usuario, $nombre, $password_hash);
+            $stmt->execute();
+            if ($stmt->affected_rows > 0) {
+                $respuesta = array(
+                    'respuesta' => 'exito',
+                    'id_insertado' => $stmt->insert_id,
+                    'nombre' => $nombre,
+                    'usuario' => $usuario
+                );
+            }
+
+            $stmt->close();
+            $conn->close();
+        } catch (\Exception $e) {
+            $respuesta = array(
+                'respuesta' => 'Error',
+                'Error' => $e->getMessage()
+            );
+        }
+    } else {
+        $respuesta = array(
+            'respuesta' => 'error'
+        );
+    }
+    die(json_encode($respuesta));
+}
+
+
+/* ##################### LOGUEO CON USUARIO ADMIN AREA-ADMIN.PHP ################### */
+if ($_POST['registro'] == 'logueo') {
 
     /* Datos que se envian desde el formulario Administrador */
     $usuario = filter_var($_POST['usuario'], FILTER_SANITIZE_STRING);
@@ -115,3 +175,6 @@ if (isset($_POST['login-admin'])) {
         }
     die(json_encode($respuesta));
 }
+
+
+

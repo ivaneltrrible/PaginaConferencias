@@ -15,3 +15,16 @@
 .swal2-popup {
     font-size: 1.6rem!important;
 }
+
+
+/* ### TH & TD CENTRADO ### */
+* th,
+  td
+{
+    text-align: center;
+}
+thead,
+tfoot
+{
+    background-color: rgb(75, 66, 66, .5);
+}
