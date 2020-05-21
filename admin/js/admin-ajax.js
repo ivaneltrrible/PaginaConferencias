@@ -115,19 +115,22 @@ $(document).ready(function () {
         
         if (resultado.respuesta == "exitoso") {
           Swal.fire({
+            
             title: "Cambio Exitoso",
             icon: "success",
-            text: "Se Actualizaron los datos Correctamente " + resultado.nombre
+            text: "Se Actualizaron los datos Correctamente " + resultado.nombre,
+            // showLoaderOnConfirm: true,
+            // showCloseButton: true
           });
           setTimeout(() => {
-            window.location.href = "area-admin.php";
+            window.location.href = "lista-admins.php";
           }, 3000);
         } else {
           /* ## INGRESO EXITOSO AL SISTEMA ERRONEO ## */
           Swal.fire({
-            title: "Hubo un Error",
+            title: "Usuario no disponible",
             icon: "error",
-            text: "Usuario no disponible"
+            html: `El usuario :  <b>${resultado.usuario}</b>  no esta disponible intente con otro, si persiste el problema contactar al administrador `
           });
         }
       },
@@ -140,6 +143,6 @@ $(document).ready(function () {
 
 
 
-  
+
 });
 /* ## TERMINA DOCUMENTO ## */

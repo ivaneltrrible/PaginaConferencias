@@ -25,4 +25,13 @@ $(document).ready(function () {
 
     // pagingType: "full_numbers",
   });
+
+
+  /* ##### VALIDAR QUE LOS DOS PASSWORD SEAN IGUALES */
+  $('#repetir-password').blur(function() {
+      let password_nuevo = $("#exampleInputPassword1").val();
+      console.log(password_nuevo);
+  })
 });
+
+

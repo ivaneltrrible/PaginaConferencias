@@ -52,7 +52,11 @@ include_once 'templates/navegacion.php';
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" required>
+                        <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" >
+                    </div>
+                    <div class="form-group">
+                        <label for="repetir-password">Repite Password</label>
+                        <input type="password" class="form-control" id="repetir-password" name="repetir-password" placeholder="Repite de nuevo el password">
                     </div>
 
                 </div>

@@ -28,3 +28,9 @@ tfoot
 {
     background-color: rgb(75, 66, 66, .5);
 }
+
+
+/* #### INPUT DENTRO DEL EDITAR ADMIN RESALTAR EN BOLD #### */
+.form-control {
+    font-weight: bold;
+}
