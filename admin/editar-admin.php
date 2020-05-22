@@ -46,17 +46,21 @@ include_once 'templates/navegacion.php';
                         <label for="usuario">Usuario</label>
                         <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Nombre de Usuario" required value="<?php echo $admin['usuario'] ?>">
                     </div>
+
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre Completo" required value="<?php echo $admin['nombre'] ?>">
                     </div>
+
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" >
                     </div>
+                    
                     <div class="form-group">
                         <label for="repetir-password">Repite Password</label>
-                        <input type="password" class="form-control" id="repetir-password" name="repetir-password" placeholder="Repite de nuevo el password">
+                        <input type="password" class="form-control" id="repetir-password" name="repetir-password" placeholder="Repite el nuevo password">
+                        <span class="help-block" id="resultado_password"></span>
                     </div>
 
                 </div>
@@ -65,7 +69,7 @@ include_once 'templates/navegacion.php';
                 <div class="box-footer">
                     <input type="hidden" name="registro" value="actualizar">
                     <input type="hidden" name="editar-admin" value="<?php echo $id_admin ?>">
-                    <button type="submit" class="btn btn-primary">Editar</button>
+                    <button type="submit" class="btn btn-primary" id="boton_habilitar">Editar</button>
                 </div>
             </form>
         </div>

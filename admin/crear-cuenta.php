@@ -41,13 +41,20 @@ include_once 'templates/navegacion.php';
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
-                    </div>                    
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="repetir-password">Repite Password</label>
+                        <input type="password" class="form-control" id="repetir-password" name="repetir-password" placeholder="Repite el nuevo password">
+                        <span class="help-block" id="resultado_password"></span>
+                    </div>
+
                 </div>
                 <!-- /.box-body -->
 
                 <div class="box-footer">
                     <input type="hidden" name="registro" value="crear">
-                    <button type="submit" class="btn btn-primary">Crear Usuario</button>
+                    <button type="submit" class="btn btn-primary" id="boton_habilitar">Crear Usuario</button>
                 </div>
             </form>
         </div>

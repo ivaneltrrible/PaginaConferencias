@@ -60,7 +60,7 @@ include_once 'templates/navegacion.php';
                                         <td>
                                             <a href="editar-admin.php?id=<?php echo $admin['id_admin'] ?>" class="btn bg-orange btn-flat margin"><i class="fa fa-pencil"></i>
                                             </a>
-                                            <a href="eliminar-admin.php?id=<?php echo $admin['id_admin'] ;?>" class="btn bg-maroon btn-flat margin borrar_registro" data-id="<?php echo $admin['id_admin'] ;?>" data-tipo="admin"><i class="fa fa-trash"></i>
+                                            <a href="#" class="btn bg-maroon btn-flat margin borrar_registro" data-id="<?php echo $admin['id_admin'] ;?>" data-tipo="admin"><i class="fa fa-trash"></i>
                                             </a>
                                         </td>
                                     </tr>

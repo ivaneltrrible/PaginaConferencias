@@ -1,5 +1,6 @@
 /* Mi script ajax */
 $(document).ready(function () {
+  /* ################ CREAR ADMIN ################## */
   $("#crear-admin").on("submit", function (e) {
     e.preventDefault();
 
@@ -48,6 +49,66 @@ $(document).ready(function () {
   });
   /* ## TERMINA LA FUNCION DEL CLICK SUBMIT ## */
 
+  /* ################ ELIMINA ADMIN ################## */
+  $(".borrar_registro").on("click", function (e) {
+    e.preventDefault;
+    let id = $(this).attr("data-id");
+    let tipo = $(this).attr("data-tipo");
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "Eliminar Administrador",
+        text: "¿Estas seguro de eliminar este administrador?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si, Eliminar",
+        cancelButtonText: "No, cancelar",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.value) {
+          /* ### SI DA CLICK A CONFIRMAR DE BORRAR ### */
+          $.ajax({
+            type: "post",
+            url: `modelo-${tipo}.php`,
+            data: {
+              id: id,
+              registro: "eliminar",
+            },
+            dataType: "json",
+            success: function (response) {
+              let resultado = response;
+                  console.log(resultado);
+            },
+          });
+
+          swalWithBootstrapButtons.fire(
+            "Eliminado!",
+            "El administrador se elimino de manera correcta",
+            "success"
+          );
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            "Cancelado",
+            "No se elimino ningun Administrador",
+            "error"
+          );
+        }
+      });
+  });
+
+  /* ################ LOGUEO ADMIN ################## */
   $("#login-admin").on("submit", function (e) {
     e.preventDefault();
 
@@ -89,16 +150,13 @@ $(document).ready(function () {
   });
   /* ## TERMINA LA FUNCION DEL CLICK SUBMIT ## */
 
-
-
-  
   /* ######### EDITAR ADMIN ############ */
 
   $("#editar-admin").on("submit", function (e) {
     e.preventDefault();
 
     var datos = $(this).serializeArray();
-    
+
     $.ajax({
       type: $(this).attr("method"),
       url: $(this).attr("action"),
@@ -106,16 +164,14 @@ $(document).ready(function () {
       dataType: "json",
       success: function (data) {
         var resultado = data;
-       
 
         /* ## VER QUE MANDA EL SERVIDOR ## */
         // console.log(resultado);
 
         /* ## INGRESO EXITOSO AL SISTEMA ## */
-        
+
         if (resultado.respuesta == "exitoso") {
           Swal.fire({
-            
             title: "Cambio Exitoso",
             icon: "success",
             text: "Se Actualizaron los datos Correctamente " + resultado.nombre,
@@ -130,7 +186,7 @@ $(document).ready(function () {
           Swal.fire({
             title: "Usuario no disponible",
             icon: "error",
-            html: `El usuario :  <b>${resultado.usuario}</b>  no esta disponible intente con otro, si persiste el problema contactar al administrador `
+            html: `El usuario :  <b>${resultado.usuario}</b>  no esta disponible intente con otro, si persiste el problema contactar al administrador `,
           });
         }
       },
@@ -139,10 +195,5 @@ $(document).ready(function () {
     /* ## TERMINA EL EVENTO AJAX ## */
   });
   /* ## TERMINA LA FUNCION DEL CLICK SUBMIT ## */
-
-
-
-
-
 });
 /* ## TERMINA DOCUMENTO ## */
