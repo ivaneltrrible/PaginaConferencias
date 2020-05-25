@@ -2,7 +2,7 @@
     // // $ip = $_POST['parametroIP'];
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
-    define('DB_PASSWORD', '');
+    define('DB_PASSWORD', 'maribelylucio13');
     define('DB_NAME', 'gdlwebcamp');
     
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);

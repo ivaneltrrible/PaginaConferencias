@@ -107,22 +107,26 @@
 
            </ul>
          </li>
-         <!-- Categorias para agregar mas administradores al sitio-->
-         <li class="treeview">
-           <a href="#">
-             <i class="fa fa-user" aria-hidden="true"></i>
-             <span>Administradores</span>
 
-           </a>
-           <ul class="treeview-menu">
-             <li><a href="lista-admins.php"><i class="fa fa-list-ul" aria-hidden="true"></i>
-                 Ver Todos..</a></li>
-             <li><a href="crear-cuenta.php"><i class="fa fa-user-plus" aria-hidden="true"></i>
-                 Agregar administrador</a></li>
+         <!-- SE CREA CONDCION DE NIVEL PARA QUE SOLO VEA EL ADMIN PRINCIPAL -->
+         <?php
+          if ($_SESSION['nivel'] == 1) : ?>
+           <!-- Categorias para agregar mas administradores al sitio-->
+           <li class="treeview">
+             <a href="#">
+               <i class="fa fa-user" aria-hidden="true"></i>
+               <span>Administradores</span>
 
-           </ul>
-         </li>
-         
+             </a>
+             <ul class="treeview-menu">
+               <li><a href="lista-admins.php"><i class="fa fa-list-ul" aria-hidden="true"></i>
+                   Ver Todos..</a></li>
+               <li><a href="crear-cuenta.php"><i class="fa fa-user-plus" aria-hidden="true"></i>
+                   Agregar administrador</a></li>
+
+             </ul>
+           </li>
+         <?php endif; ?>
      </section>
      <!-- /.sidebar -->
    </aside>

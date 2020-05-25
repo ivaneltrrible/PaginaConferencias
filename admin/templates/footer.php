@@ -24,8 +24,10 @@
 <script src="js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="js/demo.js"></script>
-<!-- Mi Script -->
+<!-- Mi Script Eliminar, Crear y Actualizar admin -->
 <script src="js/admin-ajax.js"></script>
+<!-- script para login  -->
+<script src="js/login-admin.js"></script>
 <!-- ## SE AGREGA DATATABLE PARA FUNCIONES DE LAS TABLAS ### -->
 <script src="js/app.js"></script>
 </body>

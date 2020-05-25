@@ -21,7 +21,7 @@ if(isset($_GET['cerrar_sesion'])){
     <div class="login-box-body">
       <p class="login-box-msg">INGRESO AL SISTEMA</p>
 
-      <form method="post" id="login-admin" name="login-admin-form" action="modelo-admin.php">
+      <form method="post" id="login-admin" name="login-admin-form" action="login-admin.php">
         <div class="form-group has-feedback">
           <input type="text" class="form-control" placeholder="Usuario" name="usuario">
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -58,6 +58,8 @@ if(isset($_GET['cerrar_sesion'])){
   <script src="js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="js/demo.js"></script>
+  <!-- login-admin -->
+  <script src="js/login-admin.js"></script>
   <!-- Mi Script -->
   <script src="js/admin-ajax.js"></script>
   <script>
