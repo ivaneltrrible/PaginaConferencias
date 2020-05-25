@@ -11,7 +11,7 @@ include_once 'templates/navegacion.php';
 
 
 <!-- Content Wrapper. Contains page  t -->
-<div class="content-wrapper">
+<div class="content-wrapper altura-minima">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>

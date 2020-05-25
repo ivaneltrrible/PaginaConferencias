@@ -122,10 +122,7 @@
 
            </ul>
          </li>
-         <!-- Agregar Documentacion sobre la pagina como la forma de utlizar ell dashboard -->
-         <li class="header">Sobre la Pagina</li>
-         <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
-       </ul>
+         
      </section>
      <!-- /.sidebar -->
    </aside>

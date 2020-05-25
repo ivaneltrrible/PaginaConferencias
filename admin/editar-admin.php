@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include_once 'funciones/sesiones.php';
 include_once 'funciones/funciones.php';
 $id_admin = $_GET['id'];
@@ -17,7 +18,7 @@ include_once 'templates/navegacion.php';
 
 
 <!-- Content Wrapper. Contains page  t -->
-<div class="content-wrapper">
+<div class="content-wrapper altura-minima">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -27,7 +28,7 @@ include_once 'templates/navegacion.php';
     </section>
 
     <!-- Main content -->
-    <section class="content col-md-10">
+    <section class="content col-md-8">
 
         <!-- Default box -->
         <div class="box box-primary">
@@ -71,6 +72,7 @@ include_once 'templates/navegacion.php';
                     <input type="hidden" name="editar-admin" value="<?php echo $id_admin ?>">
                     <button type="submit" class="btn btn-primary" id="boton_habilitar">Editar</button>
                 </div>
+
             </form>
         </div>
         <!-- /.box-primary -->

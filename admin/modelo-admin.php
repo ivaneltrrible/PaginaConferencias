@@ -81,14 +81,13 @@ if ($_POST['registro'] == 'eliminar') {
         
             if ($query->affected_rows > 0) {
                 $respuesta = array(
-                    'respuesta' => 'exito',
-                    'id_insertado' => $stmt->insert_id,
-                    'nombre' => $nombre,
-                    'usuario' => $usuario
+                    'respuesta' => 'exitoso',
+                    'id_eliminado' => $id
+                    // 'id_insertado' => $query->insert_id
                 );
             }
 
-            $stmt->close();
+            $query->close();
             $conn->close();
         } catch (\Exception $e) {
             $respuesta = array(

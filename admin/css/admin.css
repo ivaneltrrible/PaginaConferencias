@@ -2,33 +2,35 @@
 .user-panel {
     height: 60px;
 }
-.user-panel>.info{
+
+.user-panel>.info {
     position: relative;
     left: 10px;
 }
-.skin-blue .sidebar-menu>li.header{
+
+.skin-blue .sidebar-menu>li.header {
     color: #1b99e2;
 }
 
 
 /* SWEET ALERT mensaje pequeño */
 .swal2-popup {
-    font-size: 1.6rem!important;
+    font-size: 1.6rem !important;
 }
-.swal2-cancel{
+
+.swal2-cancel {
     margin-right: 8px;
 }
 
 
 /* ### TH & TD CENTRADO ### */
 * th,
-  td
-{
+td {
     text-align: center;
 }
+
 thead,
-tfoot
-{
+tfoot {
     background-color: rgb(75, 66, 66, .5);
 }
 
@@ -36,4 +38,12 @@ tfoot
 /* #### INPUT DENTRO DEL EDITAR ADMIN RESALTAR EN BOLD #### */
 .form-control {
     font-weight: bold;
+}
+
+/* ## PAGINA editar-admin.php ## */
+/* ## FALLA EN ALTURA EN PANTALLAS DE LAPTOP ## */
+@media (min-width: 750px) {
+    .altura-minima{
+        min-height: 491px!important;
+    }
 }

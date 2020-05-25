@@ -76,6 +76,8 @@ $(document).ready(function () {
       .then((result) => {
         if (result.value) {
           /* ### SI DA CLICK A CONFIRMAR DE BORRAR ### */
+
+          /* ##PETICION POR AJAX A BASE DE DATOS ## */
           $.ajax({
             type: "post",
             url: `modelo-${tipo}.php`,
@@ -86,15 +88,25 @@ $(document).ready(function () {
             dataType: "json",
             success: function (response) {
               let resultado = response;
-                  console.log(resultado);
+              if (resultado.respuesta == "exitoso") {
+                swalWithBootstrapButtons.fire(
+                  "Eliminado!",
+                  "El administrador se elimino de manera correcta",
+                  "success"
+                );
+                    /* ## SE REMUEVE ELEMENTO TR DEL DOM ## */
+                jQuery('[data-id="' + resultado.id_eliminado + '"]')
+                  .parents("tr")
+                  .remove();
+              }else{
+                Swal.fire({
+                  title: 'Hubo un error....!',
+                  text: 'No se elimino usuario, contactar a administrador o intentar de nuevo',
+                  icon: 'error'
+                });
+              }
             },
           });
-
-          swalWithBootstrapButtons.fire(
-            "Eliminado!",
-            "El administrador se elimino de manera correcta",
-            "success"
-          );
         } else if (
           /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
