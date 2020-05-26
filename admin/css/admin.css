@@ -47,3 +47,9 @@ tfoot {
         min-height: 491px!important;
     }
 }
+/* se arregla que se acorta pantalla altas */
+@media (min-height: 800px) {
+    .altura-minima{
+        height: 1070px;
+    }
+}

@@ -18,6 +18,7 @@ $(document).ready(function () {
 
         /* ## INGRESO EXITOSO AL SISTEMA ## */
         if (resultado.respuesta == "exitoso") {
+          
           Swal.fire({
             title: "Login Correcto",
             icon: "success",
@@ -26,6 +27,8 @@ $(document).ready(function () {
           setTimeout(() => {
             window.location.href = "area-admin.php";
           }, 3000);
+         
+          
         } else {
           /* ## INGRESO EXITOSO AL SISTEMA ERRONEO ## */
           Swal.fire({

@@ -5,7 +5,7 @@
        <!-- Sidebar user panel -->
        <div class="user-panel">
          <div class="info">
-           <p>Lucio Ivan Benito Marquez</p>
+           <p><?php echo $_SESSION['nombre']; ?></p>
            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
          </div>
        </div>
@@ -42,9 +42,9 @@
 
            </a>
            <ul class="treeview-menu">
-             <li><a href="../layout/top-nav.html"><i class="fa fa-list-ul" aria-hidden="true"></i>
+             <li><a href="lista-evento.php"><i class="fa fa-list-ul" aria-hidden="true"></i>
                  Ver Todos..</a></li>
-             <li><a href="../layout/boxed.html"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar evento</a></li>
+             <li><a href="crear-evento.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar evento</a></li>
 
            </ul>
          </li>

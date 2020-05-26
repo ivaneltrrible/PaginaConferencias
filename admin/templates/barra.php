@@ -26,7 +26,7 @@
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img src="img/usuarioTriste.png" class="user-image" alt="User Image">
-                <span class="hidden-xs">Bienvenido: Lucio</span>
+                <span class="hidden-xs">Bienvenido: <?php echo $_SESSION['nombre']; ?></span>
               </a>
               <ul class="dropdown-menu">
                 <!-- User image -->
@@ -34,17 +34,14 @@
                   <img src="img/usuarioTriste.png" class="img-circle" alt="User Image">
 
                   <p>
-                    Lucio Marquez - Web Developer
+                  <?php echo $_SESSION['usuario']; ?> - Web Developer
                     <small>Admin</small>
                   </p>
                 </li>
                 
                 <!-- Menu Footer-->
                 <li class="user-footer">
-                  <div class="pull-left">
-                    <a href="#" class="btn btn-success btn-flat">Ajustes</a>
-                  </div>
-                  <div class="pull-right">
+                  <div class="text-center">
                     <a href="login.php?cerrar_sesion=true" class="btn btn-success btn-flat">Cerrar Sesion</a>
                   </div>
                 </li>
@@ -52,7 +49,7 @@
             </li>
             <!-- Control Sidebar Toggle Button -->
             <li>
-              <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+              <a title="Edita tu informacion de usuario" href="editar-admin.php?id=<?php echo $_SESSION['id']; ?>"><i class="fa fa-gears"></i></a>
             </li>
           </ul>
         </div>
