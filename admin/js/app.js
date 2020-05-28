@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+  /* ##DATA TABLES CONFIGURACIONES ##  */
   $(".sidebar-menu").tree();
   $("#registros").DataTable({
     language: {
@@ -61,5 +63,31 @@ $(document).ready(function () {
         .addClass("has-error").removeClass("has-success");
     }
   });
+
+
+  /* ####################### PAGINA DE CREAR EVENTO // CATEGORIAS EVENTOS ####### */
+
+  /* ## DATE PICKER FECHA DEL EVENTO ## */
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    })
+
+   /* ## TIME PICKER HORA DEL EVENTO EN EVENTOS ## */
+   //Timepicker
+   $('.timepicker').timepicker({
+    showInputs: false
+  }) 
+
+
+  /* ######### PLUGIN DE SELECT2 PARA CATEGORIAS EVENTOS ##### */
+   //Initialize Select2 Elements
+   //Select de Invitado Evento y Cateforia Evento
+   $('#categoria_evento, #invitado_evento').select2()
+
+  
+   
+   
+
 });
 /* ##### TERMINA EL DOCUMENT READY ###### */
