@@ -74,9 +74,12 @@ $(document).ready(function () {
     })
 
    /* ## TIME PICKER HORA DEL EVENTO EN EVENTOS ## */
-   //Timepicker
+   //Timepicker para obtener la hora actual
+    let hora = new Date().getHours();
+    let min = new Date().getMinutes();
    $('.timepicker').timepicker({
-    showInputs: false
+    showInputs: false,
+    defaultTime: hora + ":" + min,
   }) 
 
 

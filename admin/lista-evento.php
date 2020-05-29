@@ -74,7 +74,7 @@ include_once 'templates/navegacion.php';
                                         <td><?php echo $eventos['cat_evento'] ;?></td>
                                         <td><?php echo $eventos['nombre_invitado'] . " " . $eventos['nombre_invitado']  ;?></td>
                                         <td>
-                                            <a href="editar-eventos.php?id=<?php echo $eventos['evento_id'] ?>" class="btn bg-orange btn-flat margin"><i class="fa fa-pencil"></i>
+                                            <a href="editar-evento.php?id=<?php echo $eventos['evento_id'] ?>" class="btn bg-orange btn-flat margin"><i class="fa fa-pencil"></i>
                                             </a>
                                             <a href="#" class="btn bg-maroon btn-flat margin borrar_registro" data-id="<?php echo $eventos['evento_id']; ?>" data-tipo="eventos"><i class="fa fa-trash"></i>
                                             </a>

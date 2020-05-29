@@ -30,7 +30,7 @@ $(document).ready(function () {
           Swal.fire({
             title: "Evento Creado",
             icon: "success",
-            html: `Se creo de manera correcta el evento: <br>${resultado.nombre_evento}</br>`,
+            html: `Se creo de manera correcta el evento: <br> <b>${resultado.nombre_evento} </b>`
           });
          
         } else {

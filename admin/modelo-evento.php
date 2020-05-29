@@ -7,7 +7,7 @@
 /* Datos que se envian desde el formulario Eventos */
 $categoria_evento = filter_var($_POST['categoria_evento'], FILTER_VALIDATE_INT);
 
-// Fecha Formateada para la DB
+// Fecha Formateada para la DB 
 $fecha_evento = filter_var($_POST['fecha_evento'], FILTER_SANITIZE_SPECIAL_CHARS);
 $fecha_formateada = date("Y-m-d", strtotime($fecha_evento));
 
@@ -31,7 +31,7 @@ if ($_POST['registro'] == 'crear') {
         $stmt = $conn->prepare("INSERT INTO eventos(nombre_evento, fecha_evento, hora_evento, id_cat_evento, id_invitado_key) VALUES (?,?,?,?,?)");
         $stmt->bind_param("sssii", $nombre_evento, $fecha_formateada, $hora, $categoria_evento, $invitado_evento);
         $stmt->execute();
-
+        
         if ($stmt->affected_rows) {
             $respuesta = array(
                 'respuesta' => 'exito',
