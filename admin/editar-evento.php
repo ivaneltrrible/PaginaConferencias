@@ -36,35 +36,27 @@ include_once 'templates/navegacion.php';
                 <h3 class="box-title">Formulario para Editar Evento</h3>
             </div>
             <?php
-                include_once '../../PaginaConferencias/includes/funciones/db_conexion.php';
-                $consulta = "SELECT evento_id, nombre_evento, fecha_evento, hora_evento, cat_evento, nombre_invitado, apellido_invitado ";
-                                    $consulta .= " FROM eventos ";
-                                   
-                                    $consulta .= " INNER JOIN categoria_evento ";
-                                    $consulta .= " ON eventos.id_cat_evento = categoria_evento.id_categoria ";
+            include_once '../../PaginaConferencias/includes/funciones/db_conexion.php';
+            $consulta = "SELECT * FROM eventos WHERE evento_id = $id_evento";
 
-                                    $consulta .= " INNER JOIN invitados ";
-                                    $consulta .= " ON eventos.id_invitado_key = invitados.invitado_id ";
-                                    $consulta .= " WHERE evento_id = $id_evento ";
-                                    $consulta .= " ORDER BY evento_id ";
-                $resultado = $conn->query($consulta);
-                $evento = $resultado->fetch_assoc();
-                '<pre>' ;
-                 var_dump($evento) ;
-                '</pre>' ;
-                $hora = $evento['hora_evento'];
-                $hora_formateada = date('h:i:A', strtotime($hora));
+            $resultado = $conn->query($consulta);
+            $evento = $resultado->fetch_assoc();
+            '<pre>';
+            var_dump($evento);
+            '</pre>';
+            $hora = $evento['hora_evento'];
+            $hora_formateada = date('h:i:A', strtotime($hora));
 
             ?>
             <form role="form" method="post" id="editar-evento" name="editar-evento-form" action="modelo-evento.php">
-            <div class="box-body">
+                <div class="box-body">
                     <!-- Nombre del Evento-->
                     <div class="form-group">
                         <label for="nombre_evento">Nombre Evento</label>
 
                         <div class="input-group">
                             <div class="input-group-addon">
-                            <img src="img/file.svg" alt="Imagen de Archivo" height="16px" width="16px">
+                                <img src="img/file.svg" alt="Imagen de Archivo" height="16px" width="16px">
                             </div>
                             <input type="text" class="form-control" id="nombre_evento" name="nombre_evento" placeholder="Nombre del Evento" value="<?php echo $evento['nombre_evento']; ?>">
                         </div>
@@ -76,7 +68,7 @@ include_once 'templates/navegacion.php';
 
                         <div class="input-group date">
                             <div class="input-group-addon">
-                            <img src="img/calendario-de-google.svg" alt="Imagen de Calendario" height="16px" width="16px">
+                                <img src="img/calendario-de-google.svg" alt="Imagen de Calendario" height="16px" width="16px">
                             </div>
                             <input type="text" name="fecha_evento" class="form-control pull-right" id="datepicker" value="<?php echo $evento['fecha_evento']; ?>">
                         </div>
@@ -94,73 +86,90 @@ include_once 'templates/navegacion.php';
                                     <img src="img/hora.svg" alt="Imagen de Reloj" height="16px" width="16px">
                                 </div>
 
-                                <input type="text" name="hora_evento" class="form-control timepicker" value="<?php echo $hora_formateada ; ?>">
+                                <input type="text" name="hora_evento" class="form-control timepicker" value="<?php echo $hora_formateada; ?>">
                             </div>
                             <!-- /.input group -->
                         </div>
                         <!-- /.form group -->
                     </div>
 
-                    <!-- Categorias del Evento--> 
+                    <!-- Categorias del Evento-->
                     <div class="form-group">
                         <label for="categoria_evento">Categoria del Evento</label>
                         <div class="input-group">
-                                <div class="input-group-addon">
-                                    <img src="img/conferencias.svg" alt="Imagen de Conferencias" height="16px" width="16px">
-                                </div>
+                            <div class="input-group-addon">
+                                <img src="img/conferencias.svg" alt="Imagen de Conferencias" height="16px" width="16px">
+                            </div>
 
-                        <select name="categoria_evento" id="categoria_evento" class="form-control select2">
-                            <option value="0"><?php echo $evento['cat_evento']; ?></option>
-                                <?php 
-                                    try {
-                                        // include_once '../../PaginaConferencias/includes/funciones/db_conexion.php';
-                                        $sql = "SELECT * FROM categoria_evento";
-                                        $result = $conn->query($sql);
-                                        while ($categorias = $result->fetch_assoc()) { ?>
+                            <select name="categoria_evento" id="categoria_evento" class="form-control select2">
+                                <option value="0">-- Seleccione --</option>
+                                <?php
+                                try {
+                                    /* include_once '../../PaginaConferencias/includes/funciones/db_conexion.php'; */
+
+                                    //VARIABLE DE CONSULTA GENERAL 
+                                    $categoria_actual = $evento['id_cat_evento'];
+                                    $sql = "SELECT * FROM categoria_evento";
+                                    $result = $conn->query($sql);
+
+                                    while ($categorias = $result->fetch_assoc()) {
+                                        if ($categoria_actual == $categorias['id_categoria']) { ?>
+
+                                            <option value="<?php echo $categorias['id_categoria']; ?>" selected><?php echo $categorias['cat_evento']; ?></option>
+
+                                        <?php } else { ?>
                                             <option value="<?php echo $categorias['id_categoria']; ?>"><?php echo $categorias['cat_evento']; ?></option>
-                                       <?php } 
-                                    } catch (\Exception $e) {
-                                        //throw Exception $e
-                                        echo "Error " . $e->getMessage();
-                                    }
-                                ?>                               
-                        </select>
-                    </div>
+                                        <?php } ?>
+                                <?php }
+                                } catch (\Exception $e) {
+                                    //throw Exception $e
+                                    echo "Error " . $e->getMessage();
+                                }
+                                ?>
+                            </select>
+                        </div>
 
-                    <!-- Informacion de Invitado-->
-                    <div class="form-group">
-                        <label for="invitado_evento">Invitado del Evento</label>
-                        <div class="input-group">
+                        <!-- Informacion de Invitado-->
+                        <div class="form-group">
+                            <label for="invitado_evento">Invitado del Evento</label>
+                            <div class="input-group">
                                 <div class="input-group-addon">
                                     <img src="img/invitados.svg" alt="Imagen de Conferencias" height="16px" width="16px">
                                 </div>
 
-                        <select name="invitado_evento" id="invitado_evento" class="form-control select2" value="">
-                            <option value="0">-- Seleccione Invitado --</option>
-                                <?php 
+                                <select name="invitado_evento" id="invitado_evento" class="form-control select2" value="">
+                                    <option value="0">-- Seleccione Invitado --</option>
+                                    <?php
                                     try {
                                         // include_once '../../PaginaConferencias/includes/funciones/db_conexion.php';
+                                        $invitado_actual = $evento['id_invitado_key'];
                                         $sql = "SELECT * FROM invitados";
                                         $result = $conn->query($sql);
-                                        while ($invitados = $result->fetch_assoc()) { ?>
-                                            <option value="<?php echo $invitados['invitado_id']; ?>"><?php echo $invitados['nombre_invitado'] . " " . $invitados['apellido_invitado']; ?></option>
-                                       <?php } 
+                                        while ($invitados = $result->fetch_assoc()) {
+                                            if ($invitado_actual == $invitados['invitado_id']) { ?>
+
+                                                <option value="<?php echo $invitados['invitado_id']; ?>" selected><?php echo $invitados['nombre_invitado'] . " " . $invitados['apellido_invitado']; ?></option>
+
+                                            <?php } else { ?>
+                                                <option value="<?php echo $invitados['invitado_id']; ?>"><?php echo $invitados['nombre_invitado'] . " " . $invitados['apellido_invitado']; ?></option>
+                                            <?php } ?>
+                                    <?php }
                                     } catch (\Exception $e) {
                                         //throw Exception $e
                                         echo "Error " . $e->getMessage();
                                     }
-                                ?>                               
-                        </select>
-                    </div>
+                                    ?>
+                                </select>
+                            </div>
 
-                </div>
-                <!-- /.box-body -->
+                        </div>
+                        <!-- /.box-body -->
 
-                <div class="box-footer">
-                    <input type="hidden" name="registro" value="actualizar">
-                    <input type="hidden" name="editar-evento" value="<?php echo $id_evento ?>">
-                    <button type="submit" class="btn btn-primary" id="boton_habilitar">Editar</button>
-                </div>
+                        <div class="box-footer">
+                            <input type="hidden" name="registro" value="actualizar">
+                            <input type="hidden" name="editar-evento" value="<?php echo $id_evento ?>">
+                            <button type="submit" class="btn btn-primary" id="boton_habilitar">Editar</button>
+                        </div>
 
             </form>
         </div>

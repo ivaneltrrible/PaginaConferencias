@@ -124,7 +124,7 @@ $(document).ready(function () {
 
   /* ######### EDITAR ADMIN ############ */
 
-  $("#editar-admin").on("submit", function (e) {
+  $("#editar-evento").on("submit", function (e) {
     e.preventDefault();
 
     var datos = $(this).serializeArray();
