@@ -41,11 +41,10 @@ include_once 'templates/navegacion.php';
 
             $resultado = $conn->query($consulta);
             $evento = $resultado->fetch_assoc();
-            '<pre>';
-            var_dump($evento);
-            '</pre>';
+            
+            //Hora Formateada para el formato de la pagina web
             $hora = $evento['hora_evento'];
-            $hora_formateada = date('h:i:A', strtotime($hora));
+            $hora_formateada = date('h:i A', strtotime($hora));
 
             ?>
             <form role="form" method="post" id="editar-evento" name="editar-evento-form" action="modelo-evento.php">
@@ -66,11 +65,17 @@ include_once 'templates/navegacion.php';
                     <div class="form-group">
                         <label>Fecha del Evento:</label>
 
+                        <!-- Fecha Formateada al formato de la pagina web -->
+                        <?php 
+                            $fecha = $evento['fecha_evento'];
+                            $fecha_formato = date('m/d/Y', strtotime($fecha));
+                        ?>
+
                         <div class="input-group date">
                             <div class="input-group-addon">
                                 <img src="img/calendario-de-google.svg" alt="Imagen de Calendario" height="16px" width="16px">
                             </div>
-                            <input type="text" name="fecha_evento" class="form-control pull-right" id="datepicker" value="<?php echo $evento['fecha_evento']; ?>">
+                            <input type="text" title="mm-dd-yyyy" name="fecha_evento" class="form-control pull-right" id="datepicker" value="<?php echo $fecha_formato?>">
                         </div>
                         <!-- /.input group -->
                     </div>
@@ -141,6 +146,7 @@ include_once 'templates/navegacion.php';
                                     <option value="0">-- Seleccione Invitado --</option>
                                     <?php
                                     try {
+                                        /*### PARA MOSTRAR EL INVITADO EN EL SELECT QUE SE ESTA EDITANDO #### */
                                         // include_once '../../PaginaConferencias/includes/funciones/db_conexion.php';
                                         $invitado_actual = $evento['id_invitado_key'];
                                         $sql = "SELECT * FROM invitados";

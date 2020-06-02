@@ -1,6 +1,6 @@
 /* Mi script ajax */
 $(document).ready(function () {
-  /* ################ CREAR ADMIN ################## */
+  /* ################ CREAR EVENTO ################## */
   $("#crear-evento").on("submit", function (e) {
     e.preventDefault();
     let categoria_evento = $("#categoria_evento").val();
@@ -30,9 +30,8 @@ $(document).ready(function () {
           Swal.fire({
             title: "Evento Creado",
             icon: "success",
-            html: `Se creo de manera correcta el evento: <br> <b>${resultado.nombre_evento} </b>`
+            html: `Se creo de manera correcta el evento: <br> <b>${resultado.nombre_evento} </b>`,
           });
-         
         } else {
           Swal.fire({
             title: "Hubo un error al crear....",
@@ -41,20 +40,19 @@ $(document).ready(function () {
               "Si continua con el problema Favor de contactar al Administrador del sistema",
           });
         }
-
-        
-      }
+      },
       /* ## TERMINA EL SUCCESS ## */
     });
     /* ## TERMINA EL EVENTO AJAX ## */
   });
   /* ## TERMINA LA FUNCION DEL CLICK SUBMIT ## */
 
-  /* ################ ELIMINA ADMIN ################## */
+  /* ################ ELIMINA EVENTO ################## */
   $(".borrar_registro").on("click", function (e) {
     e.preventDefault;
     let id = $(this).attr("data-id");
     let tipo = $(this).attr("data-tipo");
+    let nombre_evento = $(this).attr("data-nombre");
 
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -66,8 +64,8 @@ $(document).ready(function () {
 
     swalWithBootstrapButtons
       .fire({
-        title: "Eliminar Administrador",
-        text: "¿Estas seguro de eliminar este administrador?",
+        title: "Eliminar Evento",
+        html: `¿Estas seguro de eliminar el Evento: <b>${nombre_evento}<b> ?`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: "Si, Eliminar",
@@ -90,20 +88,20 @@ $(document).ready(function () {
             success: function (response) {
               let resultado = response;
               if (resultado.respuesta == "exitoso") {
-                swalWithBootstrapButtons.fire(
-                  "Eliminado!",
-                  "El administrador se elimino de manera correcta",
-                  "success"
-                );
                 /* ## SE REMUEVE ELEMENTO TR DEL DOM ## */
                 jQuery('[data-id="' + resultado.id_eliminado + '"]')
                   .parents("tr")
                   .remove();
+                swalWithBootstrapButtons.fire(
+                  "Eliminado!",
+                  "El Evento se elimino de manera correcta",
+                  "success"
+                );
               } else {
                 Swal.fire({
                   title: "Hubo un error....!",
                   text:
-                    "No se elimino usuario, contactar a administrador o intentar de nuevo",
+                    "No se elimino el evento, contactar a administrador o intentar de nuevo",
                   icon: "error",
                 });
               }
@@ -115,14 +113,14 @@ $(document).ready(function () {
         ) {
           swalWithBootstrapButtons.fire(
             "Cancelado",
-            "No se elimino ningun Administrador",
+            "No se elimino ningun Evento",
             "error"
           );
         }
       });
   });
 
-  /* ######### EDITAR ADMIN ############ */
+  /* ######### EDITAR EVENTO ############ */
 
   $("#editar-evento").on("submit", function (e) {
     e.preventDefault();
@@ -136,9 +134,7 @@ $(document).ready(function () {
       dataType: "json",
       success: function (data) {
         var resultado = data;
-
-        /* ## VER QUE MANDA EL SERVIDOR ## */
-        // console.log(resultado);
+        console.log(datos);
 
         /* ## INGRESO EXITOSO AL SISTEMA ## */
 
@@ -146,19 +142,20 @@ $(document).ready(function () {
           Swal.fire({
             title: "Cambio Exitoso",
             icon: "success",
-            text: "Se Actualizaron los datos Correctamente " + resultado.nombre,
+            html: `Se Actualizaron los datos Correctamente, <br> nombre: <b>${resultado.nombre}</b> <br> fecha: <b> ${resultado.fecha} </b> <br> hora: <b>${resultado.hora}</b>`,
             // showLoaderOnConfirm: true,
             // showCloseButton: true
           });
           setTimeout(() => {
-            window.location.href = "lista-admins.php";
-          }, 3000);
+            window.location.href = "lista-evento.php";
+          }, 5000);
         } else {
           /* ## INGRESO EXITOSO AL SISTEMA ERRONEO ## */
           Swal.fire({
-            title: "Usuario no disponible",
+            title: "Hubo un error...",
             icon: "error",
-            html: `El usuario :  <b>${resultado.usuario}</b>  no esta disponible intente con otro, si persiste el problema contactar al administrador `,
+            html:
+              "Intente de nuevo si persiste el error, contactar al administrador del sistema",
           });
         }
       },

@@ -54,3 +54,9 @@ tfoot {
         height: 1070px;
     }
 }
+
+/* ## DATA PICKER Editar AVENTO */
+div.dropdown-menu{
+    top: 100px!important;
+    left: 250px!important;
+}
