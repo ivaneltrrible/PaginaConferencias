@@ -60,3 +60,10 @@ div.dropdown-menu{
     top: 100px!important;
     left: 250px!important;
 }
+
+
+/* ##ICONOS de FONT-AWESOME Lista de Categorias ## */
+.icono-grande {
+    font-size: 2em!important;
+    margin-right: 10px!important;
+}

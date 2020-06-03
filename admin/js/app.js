@@ -90,6 +90,7 @@ $(document).ready(function () {
 
   /* ## TIME PICKER HORA DEL EVENTO EN EVENTOS ## */
   //Timepicker para obtener la hora actual
+  
   let hora = new Date().getHours();
   let min = new Date().getMinutes();
   $(".timepicker").timepicker({
@@ -101,5 +102,10 @@ $(document).ready(function () {
   //Initialize Select2 Elements
   //Select de Invitado Evento y Cateforia Evento
   $("#categoria_evento, #invitado_evento").select2();
+
+  /* ## LIBRERIA DE ICONPICKER ## */
+  $("#icono").iconpicker();
+
+
 });
 /* ##### TERMINA EL DOCUMENT READY ###### */

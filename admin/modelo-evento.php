@@ -71,9 +71,6 @@ if ($_POST['registro'] == 'eliminar') {
 
     include_once '../../PaginaConferencias/includes/funciones/db_conexion.php';
 
-
-
-
     try {
 
 

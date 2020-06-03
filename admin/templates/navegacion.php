@@ -56,9 +56,9 @@
 
            </a>
            <ul class="treeview-menu">
-             <li><a href="../layout/top-nav.html"><i class="fa fa-list-ul" aria-hidden="true"></i>
+             <li><a href="lista-categorias.php"><i class="fa fa-list-ul" aria-hidden="true"></i>
                  Ver Todos..</a></li>
-             <li><a href="../layout/boxed.html"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar Categoria</a></li>
+             <li><a href="crear-categoria.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar Categoria</a></li>
 
            </ul>
          </li>
