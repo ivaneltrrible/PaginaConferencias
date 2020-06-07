@@ -33,12 +33,16 @@ if ($_POST['registro'] == 'crear') {
             $stmt = $conn->prepare("INSERT INTO administradores(usuario, nombre, password) VALUES (?,?,?)");
             $stmt->bind_param("sss", $usuario, $nombre, $password_hash);
             $stmt->execute();
-            if ($stmt->affected_rows > 0) {
+            if ($stmt->affected_rows) {
                 $respuesta = array(
                     'respuesta' => 'exito',
                     'id_insertado' => $stmt->insert_id,
                     'nombre' => $nombre,
                     'usuario' => $usuario
+                );
+            }else{
+                $respuesta = array(
+                    'respuesta' => 'ErrorMAximo!'
                 );
             }
 

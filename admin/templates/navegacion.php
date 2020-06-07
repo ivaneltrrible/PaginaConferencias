@@ -110,7 +110,7 @@
 
          <!-- SE CREA CONDCION DE NIVEL PARA QUE SOLO VEA EL ADMIN PRINCIPAL -->
          <?php
-          if ($_SESSION['nivel'] == 1) : ?>
+          if ($_SESSION['nivel'] == 2) : ?>
            <!-- Categorias para agregar mas administradores al sitio-->
            <li class="treeview">
              <a href="#">

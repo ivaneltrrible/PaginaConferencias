@@ -18,12 +18,12 @@ $(document).ready(function () {
           
           if (resultado.respuesta == "exito") {
             Swal.fire({
-              title: "Usuario Creado",
+              title: "Categoria Creada",
               icon: "success",
-              text: "Se creo el Administrador Correctamente",
+              html: `Se creo la categoria <b>${resultado.nombre}</b> correctamente`,
             });
             setTimeout(() => {
-                window.location.href = 'lista-admins.php';
+                window.location.href = 'lista-categorias.php';
             }, 3000);
           } else if (resultado.respuesta == "Error") {
             Swal.fire({
@@ -36,10 +36,10 @@ $(document).ready(function () {
             /* ############### SI EXISTE EL USUARIO QUE ESTA INGRESANDO ########### */
             //   let nombreUsuario = resultado.usuario; OPCION A INGRESAR USUARIO
             Swal.fire({
-              title: "El nombre de usuario ya existe",
+              title: "hubo un error",
               icon: "info",
-              text:
-                "Intente de nuevo con otro usuario, Si continua con el problema Favor de contactar al Administrador del sistema",
+              html:
+                `El nombre  <b> ${resultado.nombre}</b> ya existe en la base de datos`,
               imageUrl: "./img/usuarioTriste.png",
               imageWidth: 300,
               imageHeight: 150,
@@ -56,7 +56,7 @@ $(document).ready(function () {
   
     /* ################ ELIMINA ADMIN ################## */
     $(".borrar_registro").on("click", function (e) {
-      e.preventDefault;
+      // e.preventDefault();
       let id = $(this).attr("data-id");
       let tipo = $(this).attr("data-tipo");
   
@@ -70,8 +70,8 @@ $(document).ready(function () {
   
       swalWithBootstrapButtons
         .fire({
-          title: "Eliminar Administrador",
-          text: "¿Estas seguro de eliminar este administrador?",
+          title: "Eliminar Categoria",
+          text: "¿Estas seguro de eliminar esta Categoria?",
           icon: "warning",
           showCancelButton: true,
           confirmButtonText: "Si, Eliminar",
@@ -93,20 +93,22 @@ $(document).ready(function () {
               dataType: "json",
               success: function (response) {
                 let resultado = response;
+                console.log(resultado);
+                
                 if (resultado.respuesta == "exitoso") {
                   swalWithBootstrapButtons.fire(
                     "Eliminado!",
-                    "El administrador se elimino de manera correcta",
+                    "La categoria se elimino de manera correcta",
                     "success"
                   );
                       /* ## SE REMUEVE ELEMENTO TR DEL DOM ## */
-                  jQuery('[data-id="' + resultado.id_eliminado + '"]')
+                  $('[data-id="' + resultado.id_eliminado + '"]')
                     .parents("tr")
                     .remove();
                 }else{
                   Swal.fire({
                     title: 'Hubo un error....!',
-                    text: 'No se elimino usuario, contactar a administrador o intentar de nuevo',
+                    text: 'No se elimino, contactar a administrador o intentar de nuevo',
                     icon: 'error'
                   });
                 }
@@ -126,9 +128,9 @@ $(document).ready(function () {
     });
   
   
-    /* ######### EDITAR ADMIN ############ */
+    /* ######### EDITAR Categoria ############ */
   
-    $("#editar-admin").on("submit", function (e) {
+    $("#editar-categoria").on("submit", function (e) {
       e.preventDefault();
   
       var datos = $(this).serializeArray();
@@ -140,6 +142,8 @@ $(document).ready(function () {
         dataType: "json",
         success: function (data) {
           var resultado = data;
+          console.log(resultado);
+          
   
           /* ## VER QUE MANDA EL SERVIDOR ## */
           // console.log(resultado);
@@ -148,21 +152,21 @@ $(document).ready(function () {
   
           if (resultado.respuesta == "exitoso") {
             Swal.fire({
-              title: "Cambio Exitoso",
+              title: "Se actualizaron los datos",
               icon: "success",
-              text: "Se Actualizaron los datos Correctamente " + resultado.nombre,
+              html: `Nombre Categoria: <b> ${resultado.nombre} </b> <br> Icono: <b>${resultado.icono}</b> `,
               // showLoaderOnConfirm: true,
               // showCloseButton: true
             });
             setTimeout(() => {
-              window.location.href = "lista-admins.php";
+              window.location.href = "lista-categorias.php";
             }, 3000);
           } else {
             /* ## INGRESO EXITOSO AL SISTEMA ERRONEO ## */
             Swal.fire({
-              title: "Usuario no disponible",
+              title: "Hubo un error...",
               icon: "error",
-              html: `El usuario :  <b>${resultado.usuario}</b>  no esta disponible intente con otro, si persiste el problema contactar al administrador `,
+              html: `No se actualizaron los datos, intentar de nuevo o contactar al administrador `,
             });
           }
         },

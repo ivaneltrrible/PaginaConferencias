@@ -1,6 +1,8 @@
 <?php
 error_reporting(0);
 include_once 'funciones/sesiones.php';
+
+include_once 'funciones/consulta.php';
 include_once 'templates/header.php';
 include_once 'templates/barra.php';
 include_once 'templates/navegacion.php';
@@ -43,18 +45,9 @@ include_once 'templates/navegacion.php';
                             </thead>
                             <tbody>
                             <?php
-                                /* ## CONEXION PARA REALIZAR CONSULTA DB DE LA TABLA ADMINISTRADORES ### */
-                                try {
-                                    include_once '../../PaginaConferencias/includes/funciones/db_conexion.php';
-
-                                    $consulta = "SELECT id_admin, usuario, nombre FROM administradores";
-                                    $sql = $conn->query($consulta);
-                                } catch (\Exception $e) {
-                                    $error = $e->getMessage();
-                                    echo $error;
-                                }
+                                $admins = obtenerAdmins();
                                 /* ##CICLO WHILE PARA MOSTRAR TODOS LOS RESULTADOS EN CADA CELDA ## */
-                                while ($admin = $sql->fetch_assoc()) { ?>
+                                while ($admin = $admins->fetch_assoc()) { ?>
                                     <tr>
                                         <td><?php echo $admin['usuario']; ?></td>
                                         <td><?php echo $admin['nombre'] ?></td>

@@ -54,7 +54,7 @@ $(document).ready(function () {
 
   /* ################ ELIMINA ADMIN ################## */
   $(".borrar_registro").on("click", function (e) {
-    e.preventDefault;
+    e.preventDefault();
     let id = $(this).attr("data-id");
     let tipo = $(this).attr("data-tipo");
 
