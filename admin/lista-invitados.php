@@ -13,11 +13,11 @@ include_once 'templates/navegacion.php';
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            LISTA DE CATEGORIAS
+            LISTA DE INVITADOS
         </h1>
         <ol class="breadcrumb">
             <li><a href="area-admin.php"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Categoria Eventos</a></li>
+            <li><a href="#">Invitados</a></li>
             <li class="active">Ver Todos</li>
         </ol>
     </section>
@@ -28,7 +28,7 @@ include_once 'templates/navegacion.php';
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Elimina o Edita Categoria</h3>
+                        <h3 class="box-title">Elimina o Edita Invitado</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -36,7 +36,8 @@ include_once 'templates/navegacion.php';
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
-                                    <th>Icono</th>
+                                    <th>Biografia</th>
+                                    <th>Imagen</th>
                                     <th>Acciones</th>
                                    
                                 </tr>
@@ -47,21 +48,22 @@ include_once 'templates/navegacion.php';
                                 try {
                                     include_once '../../PaginaConferencias/includes/funciones/db_conexion.php';
 
-                                    $consulta = "SELECT * FROM categoria_evento";
+                                    $consulta = "SELECT * FROM invitados";
                                     $sql = $conn->query($consulta);
                                 } catch (\Exception $e) {
                                     $error = $e->getMessage();
                                     echo $error;
                                 }
                                 /* ##CICLO WHILE PARA MOSTRAR TODOS LOS RESULTADOS EN CADA CELDA ## */
-                                while ($categoria = $sql->fetch_assoc()) { ?>
+                                while ($invitado = $sql->fetch_assoc()) { ?>
                                     <tr>
-                                        <td><?php echo $categoria['cat_evento']; ?></td>
-                                        <td><i class="icono-grande fa <?php echo $categoria['icono'] ?>"></i><?php echo $categoria['icono'] ?></td>
+                                        <td><?php echo $invitado['nombre_invitado'] . " " . $invitado['apellido_invitado']; ?></td>
+                                        <td><?php echo $invitado['descripcion'] ?></td>
+                                        <td><img src="../img/invitados/<?php echo $invitado['url_imagen'] ?>" width="130px"  alt="imagen invitados"></td>
                                         <td>
-                                            <a href="editar-categoria.php?id=<?php echo $categoria['id_categoria'] ?>" class="btn bg-orange btn-flat margin"><i class="fa fa-pencil"></i>
+                                            <a href="editar-invitado.php?id=<?php echo $invitado['invitado_id'] ?>" class="btn bg-orange btn-flat margin"><i class="fa fa-pencil"></i>
                                             </a>
-                                            <a href="#" class="btn bg-maroon btn-flat margin borrar_registro" data-id="<?php echo $categoria['id_categoria'] ;?>" data-tipo="categoria"><i class="fa fa-trash"></i>
+                                            <a href="#" class="btn bg-maroon btn-flat margin borrar_registro" data-id="<?php echo $invitado['invitado_id'] ;?>" data-tipo="invitado"><i class="fa fa-trash"></i>
                                             </a>
                                         </td>
                                     </tr>

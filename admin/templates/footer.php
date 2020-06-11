@@ -42,6 +42,8 @@
 <script src="js/evento-ajax.js"></script>
 <!-- Script de Eventos -->
 <script src="js/categoria-ajax.js"></script>
+<!-- Script de Invitados -->
+<script src="js/invitados-ajax.js"></script>
 <!-- script para login  -->
 <script src="js/login-admin.js"></script>
 <!-- ## SE AGREGA DATATABLE PARA FUNCIONES DE LAS TABLAS ### -->

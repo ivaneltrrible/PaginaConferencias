@@ -70,9 +70,9 @@
 
            </a>
            <ul class="treeview-menu">
-             <li><a href="../layout/top-nav.html"><i class="fa fa-list-ul" aria-hidden="true"></i>
+             <li><a href="lista-registrados.php"><i class="fa fa-list-ul" aria-hidden="true"></i>
                  Ver Todos..</a></li>
-             <li><a href="../layout/boxed.html"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar a un usuario</a></li>
+             <li><a href="crear-registrado.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar a un usuario</a></li>
 
            </ul>
          </li>
@@ -84,9 +84,9 @@
 
            </a>
            <ul class="treeview-menu">
-             <li><a href="../layout/top-nav.html"><i class="fa fa-list-ul" aria-hidden="true"></i>
+             <li><a href="lista-invitados.php"><i class="fa fa-list-ul" aria-hidden="true"></i>
                  Ver Todos..</a></li>
-             <li><a href="../layout/boxed.html"><i class="fa fa-user-plus" aria-hidden="true"></i>
+             <li><a href="crear-invitado.php"><i class="fa fa-user-plus" aria-hidden="true"></i>
                  Agregar Invitado</a></li>
 
            </ul>

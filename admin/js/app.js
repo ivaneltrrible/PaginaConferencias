@@ -2,6 +2,10 @@ $(document).ready(function () {
   /* ##DATA TABLES CONFIGURACIONES ##  */
   $(".sidebar-menu").tree();
   $("#registros").DataTable({
+    // scrollY: true,
+    // scrollX: "800px",
+    
+
     language: {
       lengthMenu: "Muestra _MENU_ Registros",
       paginate: {
@@ -71,26 +75,60 @@ $(document).ready(function () {
 
   /* ## DATE PICKER FECHA DEL EVENTO ## */
   //Date picker
-  $.fn.datepicker.dates['es'] = {
-    days: ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"],
+  $.fn.datepicker.dates["es"] = {
+    days: [
+      "Domingo",
+      "Lunes",
+      "Martes",
+      "Miercoles",
+      "Jueves",
+      "Viernes",
+      "Sabado",
+    ],
     daysShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
     daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
-    months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-    monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dec"],
+    months: [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre",
+    ],
+    monthsShort: [
+      "Ene",
+      "Feb",
+      "Mar",
+      "Abr",
+      "May",
+      "Jun",
+      "Jul",
+      "Ago",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ],
     today: "Today",
     clear: "Clear",
     format: "mm/dd/yyyy",
-    titleFormat: "MM yyyy", /* Leverages same syntax as 'format' */
-    weekStart: 0
+    titleFormat: "MM yyyy" /* Leverages same syntax as 'format' */,
+    weekStart: 0,
   };
   $("#datepicker").datepicker({
     autoclose: true,
-    language: 'es'
+    language: "es",
   });
 
   /* ## TIME PICKER HORA DEL EVENTO EN EVENTOS ## */
   //Timepicker para obtener la hora actual
-  
+
   let hora = new Date().getHours();
   let min = new Date().getMinutes();
   $(".timepicker").timepicker({
@@ -105,7 +143,5 @@ $(document).ready(function () {
 
   /* ## LIBRERIA DE ICONPICKER ## */
   $("#icono").iconpicker();
-
-
 });
 /* ##### TERMINA EL DOCUMENT READY ###### */
