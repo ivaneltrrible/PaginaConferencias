@@ -39,7 +39,7 @@ include_once 'templates/navegacion.php';
                                     <th>Email</th>
                                     <th>Fecha Registro</th>
                                     <th>Pases Articulos</th>
-                                    <th class="th-lg">Talleres</th>
+                                    <th>Talleres</th>
                                     <th>Regalo</th>
                                     <th>Total</th>
                                     <th>Acciones</th>
@@ -64,10 +64,13 @@ include_once 'templates/navegacion.php';
                                 while ($registrado = $resultado->fetch_assoc()) { ?>
                                     <tr>
                                         <td>
-                                            <?php echo $registrado['nombre_registrado'] . " " . $registrado['apellido_registrado'];
+                                            <?php
+                                            echo $registrado['nombre_registrado'] . " " . $registrado['apellido_registrado'];
                                             //Se crea variable para validar si ya pago y muestra un span 
+                                            echo "<br>";
                                             $pagado = $registrado['pagado'];
                                             if ($pagado) {
+
                                                 echo '<span class="badge bg-green">PAGADO </span>';
                                             } else {
                                                 echo '<span class="badge bg-red">NO PAGADO </span>';
@@ -103,23 +106,23 @@ include_once 'templates/navegacion.php';
                                         </td>
                                         <td>
                                             <?php
-                                                //se extraen los datos y se guardan en variable
-                                                //se utiliza json_decode para convertir en array_assoc
-                                                $eventos_resultados = json_decode($registrado['talleres_registrados'],true);
+                                            //se extraen los datos y se guardan en variable
+                                            //se utiliza json_decode para convertir en array_assoc
+                                            $eventos_resultados = json_decode($registrado['talleres_registrados'], true);
 
-                                                //se separa los elemtos del array en un solo string separados por los valores otorgados (depues del implode)
-                                                $talleres =  implode("','", $eventos_resultados['eventos']);
+                                            //se separa los elemtos del array en un solo string separados por los valores otorgados (depues del implode)
+                                            $talleres =  implode("','", $eventos_resultados['eventos']);
 
-                                                //Consulta a BD para ver los eventos con ese nombre de taller
-                                                include_once '/opt/lampp/htdocs/proyectosUdemy/PaginaConferencias/includes/funciones/db_conexion.php';
+                                            //Consulta a BD para ver los eventos con ese nombre de taller
+                                            include_once '/opt/lampp/htdocs/proyectosUdemy/PaginaConferencias/includes/funciones/db_conexion.php';
 
-                                                $sql_talleres = "SELECT nombre_evento, fecha_evento, hora_evento FROM eventos WHERE clave IN ('$talleres') ";
+                                            $sql_talleres = "SELECT nombre_evento, fecha_evento, hora_evento FROM eventos WHERE clave IN ('$talleres') ";
 
-                                                $resultado_talleres = $conn->query($sql_talleres);
-                                                while ($evento = $resultado_talleres->fetch_assoc()) {
-                                                    echo $evento['nombre_evento'] . " " . $evento['fecha_evento'] . " " . $evento['hora_evento'] . "<br>";
-                                                }
-                                               
+                                            $resultado_talleres = $conn->query($sql_talleres);
+                                            while ($evento = $resultado_talleres->fetch_assoc()) {
+                                                echo $evento['nombre_evento'] . " " . $evento['fecha_evento'] . " " . $evento['hora_evento'] . "<br>";
+                                            }
+
                                             ?>
                                         </td>
                                         <td><?php echo $registrado['nombre_regalo']; ?></td>

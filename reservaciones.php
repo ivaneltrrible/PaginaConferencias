@@ -8,15 +8,15 @@
         <div id="datos_usuarios" class="caja registro clearfix">
             <div class="campo">
                 <label for="nombre">Nombre:</label>
-                <input type="text" name="nombre" id="nombre" placeholder="Tu Nombre" >
+                <input type="text" name="nombre" id="nombre" placeholder="Tu Nombre">
             </div>
             <div class="campo">
                 <label for="apellido">Apellido:</label>
-                <input type="text" name="apellido" id="apellido" placeholder="Tu Apellido" >
+                <input type="text" name="apellido" id="apellido" placeholder="Tu Apellido">
             </div>
             <div class="campo">
                 <label for="email">Email:</label>
-                <input type="email" name="email" id="email" placeholder="Tu Email" >
+                <input type="email" name="email" id="email" placeholder="Tu Email">
             </div>
             <div id="error"></div>
         </div>
@@ -68,6 +68,28 @@
         <div id="eventos" class="eventos clearfix">
             <h3>Elige tus talleres</h3>
             <div class="caja">
+                <?php
+                try {
+                    include_once 'includes/funciones/db_conexion.php';
+                    $sql = "SELECT eventos.*, categoria_evento.cat_evento, invitados.nombre_invitado, invitados.apellido_invitado ";
+                    $sql .= " FROM eventos ";
+                    $sql .= " INNER JOIN categoria_evento ";
+                    $sql .= " ON eventos.id_cat_evento = categoria_evento.id_categoria ";
+                    $sql .= " INNER JOIN invitados ";
+                    $sql .= " ON eventos.id_invitado_key = invitados.invitado_id ";
+                    $sql .= " ORDER BY eventos.fecha_evento, eventos.id_cat_evento ";
+                    // echo $sql;
+                    $resultado = $conn->query($sql);
+                } catch (\Exception $e) {
+                    echo 'Error!' . $e->getMessage();
+                }
+                $evento = $resultado->fetch_assoc();
+                '<pre>' ;
+                 var_dump($evento) ;
+                '</pre>' ;
+
+                ?>
+
                 <div id="viernes" class="contenido-dia clearfix">
                     <h4>Viernes</h4>
                     <div>
