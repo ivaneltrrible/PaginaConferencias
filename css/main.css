@@ -1301,6 +1301,11 @@ div.contenido-dia input {
   color: #fe4918;
   font-weight: bold;
 }
+.contenido-dia .autor{
+  font-size: 12px;
+  font-weight: bold;
+  font-style: italic;
+}
 
 /* ===== Resumen Registro ====== */
 .resumen p {
