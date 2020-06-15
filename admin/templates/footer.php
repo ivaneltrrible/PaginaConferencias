@@ -46,6 +46,8 @@
 <script src="js/invitados-ajax.js"></script>
 <!-- script para login  -->
 <script src="js/login-admin.js"></script>
+<!-- COTIZADOR DE PAGINA CONFERENCIAS -->
+<script src="../js/cotizador.js"></script>
 <!-- ## SE AGREGA DATATABLE PARA FUNCIONES DE LAS TABLAS ### -->
 <script src="js/app.js"></script>
 </body>

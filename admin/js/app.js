@@ -139,7 +139,7 @@ $(document).ready(function () {
   /* ######### PLUGIN DE SELECT2 PARA CATEGORIAS EVENTOS ##### */
   //Initialize Select2 Elements
   //Select de Invitado Evento y Cateforia Evento
-  $("#categoria_evento, #invitado_evento").select2();
+  $("#categoria_evento, #invitado_evento, #regalo").select2();
 
   /* ## LIBRERIA DE ICONPICKER ## */
   $("#icono").iconpicker();

@@ -33,7 +33,7 @@
     <h2>Validar Datos</h2>
     <?php if (isset($_GET['existoso'])) :
         if ($_GET['existoso'] == "1") :
-            echo "Resgristro Exitoso";
+            echo "Registro Exitoso";
         endif;
 
     endif;  ?>

@@ -43,27 +43,74 @@ tfoot {
 /* ## PAGINA editar-admin.php ## */
 /* ## FALLA EN ALTURA EN PANTALLAS DE LAPTOP ## */
 @media (min-width: 750px) {
-    .altura-minima{
-        min-height: 491px!important;
+    .altura-minima {
+        min-height: 491px !important;
         height: 799px;
     }
 }
+
 /* se arregla que se hace pequeña en pantalla altas */
 @media (min-height: 800px) {
-    .altura-minima{
+    .altura-minima {
         height: 1070px;
     }
 }
 
+/*################ CSS PAGINA CREAR REGISTRO ########### */
+
+.altura-minima-2800 {
+    height: 2800px !important;
+}
+p.promo-oferta{
+    font-size: 19px;
+    color: #fe4918;
+    font-weight: bold;
+}   
+p.precio-oferta{
+    font-size: 3.5rem;
+}
+@media (min-width: 995px) {
+    input#paseDiario {
+        margin-top: 27px;
+    }
+}
+.contenido-dia{
+    padding: 15px;
+    border-bottom: 1px solid red;
+    margin: 3px;
+}
+.contenido-dia h4 {
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.tipo-evento p{
+    color: #fe4918;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+label{
+    font-weight: normal;
+}
+label time{
+    color: #fe4918;
+}
+.autor{
+    font-weight: bold;
+    font-style: italic;
+}
+
+/*################ TERMINA PAGINA CREAR REGISTRO ########### */
+
 /* ## DATA PICKER Editar AVENTO */
-div.dropdown-menu{
-    top: 100px!important;
-    left: 250px!important;
+div.dropdown-menu {
+    top: 100px !important;
+    left: 250px !important;
 }
 
 
 /* ##ICONOS de FONT-AWESOME Lista de Categorias ## */
 .icono-grande {
-    font-size: 2em!important;
-    margin-right: 10px!important;
+    font-size: 2em !important;
+    margin-right: 10px !important;
 }
