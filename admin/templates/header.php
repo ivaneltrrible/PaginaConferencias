@@ -25,6 +25,8 @@
   <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
   <!-- ICONPICKER FONTAWESOME -->
   <link rel="stylesheet" href="css/fontawesome-iconpicker.min.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="plugins/iCheck/all.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins

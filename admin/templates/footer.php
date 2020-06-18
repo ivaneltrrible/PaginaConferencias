@@ -33,6 +33,8 @@
 <script src="js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="js/demo.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="plugins/iCheck/icheck.min.js"></script>
 
 
 
@@ -44,6 +46,8 @@
 <script src="js/categoria-ajax.js"></script>
 <!-- Script de Invitados -->
 <script src="js/invitados-ajax.js"></script>
+<!-- Script de Invitados -->
+<script src="js/registrado-ajax.js"></script>
 <!-- script para login  -->
 <script src="js/login-admin.js"></script>
 <!-- COTIZADOR DE PAGINA CONFERENCIAS -->

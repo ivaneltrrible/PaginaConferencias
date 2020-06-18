@@ -63,6 +63,7 @@ include_once 'templates/navegacion.php';
                             <input type="email" name="email_registrado" id="email" class="form-control pull-right" placeholder="Escribe el Email">
                         </div>
                     </div>
+                    <div id="error"></div>
                     <!-- ######## TERMINA EMAIL ########## -->
 
                     <div class="form-group">
@@ -172,7 +173,7 @@ include_once 'templates/navegacion.php';
                                                 <?php foreach ($evento_dia as $evento) { ?>
 
                                                     <label>
-                                                        <input type="checkbox" name="registro[]" id="<?php echo $evento['id']; ?>" value="<?php echo $evento['id']; ?>">
+                                                        <input type="checkbox" class="flat-green" name="registro_evento[]" id="<?php echo $evento['id']; ?>" value="<?php echo $evento['id']; ?>">
                                                         <time><?php echo $evento['hora']; ?></time> <?php echo $evento['nombre']; ?>
                                                         <br>
                                                         <span class="autor"><?php echo $evento['nombre_invitado'] . " " . $evento['nombre_invitado'] ?></span>

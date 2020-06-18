@@ -143,5 +143,11 @@ $(document).ready(function () {
 
   /* ## LIBRERIA DE ICONPICKER ## */
   $("#icono").iconpicker();
+
+    //Flat red color scheme for iCheck checkboxes plugin
+    $('input[type="checkbox"].flat-green, input[type="radio"].flat-green').iCheck({
+      checkboxClass: 'icheckbox_flat-orange',
+      radioClass   : 'iradio_flat-orange'
+    })
 });
 /* ##### TERMINA EL DOCUMENT READY ###### */
