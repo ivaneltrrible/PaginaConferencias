@@ -20,33 +20,20 @@ $(document).ready(function () {
             Swal.fire({
               title: "Categoria Creada",
               icon: "success",
-              html: `Se creo la categoria <b>${resultado.nombre}</b> correctamente`,
+              html: `Se creo el registro <b>${resultado.nombre}</b> correctamente`,
             });
             setTimeout(() => {
-                window.location.href = 'lista-categorias.php';
+                window.location.href = 'lista-registrados.php';
             }, 3000);
-          } else if (resultado.respuesta == "Error") {
+          } else {
             Swal.fire({
               title: "Hubo un error al crear....",
               icon: "error",
               text:
                 "Si continua con el problema Favor de contactar al Administrador del sistema",
             });
-          } else if (resultado.respuesta == "error") {
-            /* ############### SI EXISTE EL USUARIO QUE ESTA INGRESANDO ########### */
-            //   let nombreUsuario = resultado.usuario; OPCION A INGRESAR USUARIO
-            Swal.fire({
-              title: "hubo un error",
-              icon: "info",
-              html:
-                `El nombre  <b> ${resultado.nombre}</b> ya existe en la base de datos`,
-              imageUrl: "./img/usuarioTriste.png",
-              imageWidth: 300,
-              imageHeight: 150,
-              imageAlt: "Custom image",
-            });
           }
-          /* ## TERMINA EL ELSEIF DE VALIDAR USUARIO ## */
+          /* ## TERMINA EL ELSE*/
         },
         /* ## TERMINA EL SUCCESS ## */
       });
@@ -130,7 +117,7 @@ $(document).ready(function () {
   
     /* ######### EDITAR Categoria ############ */
   
-    $("#editar-categoria").on("submit", function (e) {
+    $("#editar-registro").on("submit", function (e) {
       e.preventDefault();
   
       var datos = $(this).serializeArray();
@@ -143,23 +130,19 @@ $(document).ready(function () {
         success: function (data) {
           var resultado = data;
           console.log(resultado);
-          
-  
-          /* ## VER QUE MANDA EL SERVIDOR ## */
-          // console.log(resultado);
   
           /* ## INGRESO EXITOSO AL SISTEMA ## */
   
           if (resultado.respuesta == "exitoso") {
             Swal.fire({
-              title: "Se actualizaron los datos",
+              title: "Se actualizaron los datos correctamente",
               icon: "success",
-              html: `Nombre Categoria: <b> ${resultado.nombre} </b> <br> Icono: <b>${resultado.icono}</b> `,
+              html: `Nombre : <b> ${resultado.nombre} </b> `,
               // showLoaderOnConfirm: true,
               // showCloseButton: true
             });
             setTimeout(() => {
-              window.location.href = "lista-categorias.php";
+              window.location.href = "lista-registrados.php";
             }, 3000);
           } else {
             /* ## INGRESO EXITOSO AL SISTEMA ERRONEO ## */

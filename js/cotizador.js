@@ -26,6 +26,9 @@
     if (botonRegistro) {
       botonRegistro.disabled = true;
     }
+    document.getElementById("viernes").style.display = "none";
+    document.getElementById("sabado").style.display = "none";
+    document.getElementById("domingo").style.display = "none";
 
     // // let botonNotificar = $("#btnRegistro").css("opacity");
 
@@ -48,6 +51,16 @@
       nombre.addEventListener("blur", validarDatos);
       apellido.addEventListener("blur", validarDatos);
       email.addEventListener("blur", validarEmail);
+
+      /* validar en editar registro cuando el campo de boletos tenga una cantidad ya puesta  */
+      let editar_formulario = document.getElementsByClassName(
+        "editar_formulario"
+      );
+      if (editar_formulario.length > 0) {
+        if (paseDia.value || paseDiario.value || paseDosDias.value) {
+          mostrarDias();
+        }
+      }
 
       //Funciones
 

@@ -72,7 +72,7 @@
            <ul class="treeview-menu">
              <li><a href="lista-registrados.php"><i class="fa fa-list-ul" aria-hidden="true"></i>
                  Ver Todos..</a></li>
-             <li><a href="crear-registrado.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar a un usuario</a></li>
+             <li><a href="crear-registrado.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Agregar un registro</a></li>
 
            </ul>
          </li>

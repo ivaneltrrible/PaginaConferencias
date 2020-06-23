@@ -1,12 +1,13 @@
 <?php 
 
 function productos_json(&$boletos, &$camisas = 0, &$etiquetas = 0){
-    $dias = array(0 => 'un_dia', 1 => 'pase_completo', 2 => 'pase_2dias'); 
+    $dias = array(0 => 'un_dia', 1 => 'completo', 2 => '2dias'); 
  
         unset($boletos['un_dia']['precio']);
         unset($boletos['completo']['precio']);
         unset($boletos['2dias']['precio']);
         $total_boletos = array_combine($dias, $boletos);
+
         $camisas = (int) $camisas; 
            if($camisas > 0): 
                 $total_boletos['camisas'] = $camisas;

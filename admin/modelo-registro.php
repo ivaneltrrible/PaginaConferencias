@@ -4,13 +4,15 @@
 // echo '</pre>' ;
 include_once 'funciones/funciones.php' ;
 
-
+$id_registro = $_POST['id_registrado'];
 $nombre = $_POST['nombre_registrado'];
 $apellido = $_POST['apellido_registrado'];
 $email = $_POST['email_registrado'];
 $regalo = $_POST['regalo'];
 $total = $_POST['total_pedido'];
 $eventos = $_POST['registro_evento'];
+$fecha_registro = $_POST['fecha_registro'];
+
 $eventos_formateados = eventos_json($eventos);
 
 $boletos = $_POST['boletos'];
@@ -102,30 +104,25 @@ if ($_POST['registro'] == 'eliminar') {
 }
 
 
-/* ###################### EDITAR USUARIO ADMIN #################### */
+/* ###################### EDITAR REGISTRO DE MANERA MANUAL (COMPRAS) #################### */
 if ($_POST['registro'] == 'actualizar') {
-
-    /* Datos que se envian desde el formulario Administrador */
-    $nombre = filter_var($_POST['nombre_categoria'], FILTER_SANITIZE_STRING);
-    $icono = filter_var($_POST['icono'], FILTER_SANITIZE_STRING);
-    $id_editar = filter_var($_POST['id_categoria'], FILTER_SANITIZE_NUMBER_INT);
+    // die(json_encode($_POST));
 
 
-
-    include_once '../../PaginaConferencias/includes/funciones/db_conexion.php';
+    // include_once '../../PaginaConferencias/includes/funciones/db_conexion.php';
 
     try {
-        /* ##### ACTUALIZAR PERO SOLO USUARIO Y NOMBRE ##### */
+        /* ##### ACTUALIZAR REGISTRO ##### */
 
-        $stmt = $conn->prepare("UPDATE categoria_evento SET cat_evento = ?, icono = ?, fecha_actualizacion = NOW() WHERE id_categoria = ?");
-        $stmt->bind_param("ssi", $nombre, $icono, $id_editar);
+        $stmt = $conn->prepare("UPDATE registrados SET nombre_registrado = ?, apellido_registrado = ?, email_registrado = ?, fecha_registro = ?, pases_articulos = ?, talleres_registrados = ?, regalo = ?, total_pagado = ?, pagado = 1 WHERE id_registrado = ?");
+        $stmt->bind_param("sssssisi", $nombre, $apellido, $email, $fecha_registro, $pedidos, $eventos_formateados, $regalo, $total, $id_registro);
         $stmt->execute();
         if ($stmt->affected_rows > 0) {
             $respuesta = array(
                 'respuesta' => 'exitoso',
                 'id_actualizado' => $stmt->insert_id,
                 'nombre' => $nombre,
-                'icono' => $icono
+                'apellido' => $apellido
             );
         } else {
             $respuesta = array(

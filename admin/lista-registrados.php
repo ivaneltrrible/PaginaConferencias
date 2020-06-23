@@ -87,20 +87,25 @@ include_once 'templates/navegacion.php';
 
                                             //Se re-formatea los datos para que sean mas legibles
                                             $articulos_formateados = array(
-                                                'pase_dia' => 'Pase por un dia',
-                                                'pase_diario' => 'Pase Diario',
-                                                'pase_2dias' => 'Pase por dos dias',
+                                                'un_dia' => 'Pase por un dia',
+                                                'completo' => 'Pase Diario',
+                                                '2dias' => 'Pase por dos dias',
                                                 'camisas' => 'Camisa(s)',
                                                 'etiquetas' => 'Etiqueta(s)'
                                             );
 
                                             //se recorre todos los pases comprados de la BD 
                                             foreach ($articulos_pases as $key => $articulo) {
-                                                echo  "<b>" . $articulo . "</b>" .  " " . $articulos_formateados[$key] .  "<br>";
+                                            
+                                                if (key_exists('cantidad', $articulo)) {
+                                                    echo  "<b>" . $articulo['cantidad'] . "</b>" .  " " . $articulos_formateados[$key] .  "<br>";
+                                                } else {
+                                                    echo  "<b>" . $articulo . "</b>" .  " " . $articulos_formateados[$key] .  "<br>";
+                                                }
                                             }
-                                            // '<pre>' ;
-                                            //  var_dump($articulos_pases) ;
-                                            // '</pre>' ;
+                                            // echo '<pre>' ;
+                                            //   var_dump($articulos_pases) ;
+                                            // echo '</pre>' ;
 
                                             ?>
                                         </td>
@@ -116,7 +121,7 @@ include_once 'templates/navegacion.php';
                                             //Consulta a BD para ver los eventos con ese nombre de taller
                                             include_once '/opt/lampp/htdocs/proyectosUdemy/PaginaConferencias/includes/funciones/db_conexion.php';
 
-                                            $sql_talleres = "SELECT nombre_evento, fecha_evento, hora_evento FROM eventos WHERE clave IN ('$talleres') ";
+                                            $sql_talleres = "SELECT nombre_evento, fecha_evento, hora_evento FROM eventos WHERE evento_id IN ('$talleres') ";
 
                                             $resultado_talleres = $conn->query($sql_talleres);
                                             while ($evento = $resultado_talleres->fetch_assoc()) {
