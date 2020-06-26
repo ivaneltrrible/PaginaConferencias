@@ -2,17 +2,21 @@
 // echo '<pre>' ;
 //  var_dump($_POST) ;
 // echo '</pre>' ;
-include_once 'funciones/funciones.php' ;
+include_once 'funciones/funciones.php';
 
-$id_registro = $_POST['id_registrado'];
+if (isset($_POST['id_registrado'])) {
+    $id_registro = $_POST['id_registrado'];
+}
+
 $nombre = $_POST['nombre_registrado'];
 $apellido = $_POST['apellido_registrado'];
 $email = $_POST['email_registrado'];
 $regalo = $_POST['regalo'];
 $total = $_POST['total_pedido'];
 $eventos = $_POST['registro_evento'];
-$fecha_registro = $_POST['fecha_registro'];
-
+if (isset($_POST['fecha_registro'])) {
+    $fecha_registro = $_POST['fecha_registro'];
+}
 $eventos_formateados = eventos_json($eventos);
 
 $boletos = $_POST['boletos'];
@@ -30,37 +34,37 @@ $pedidos = productos_json($boletos, $camisas, $etiquetas);
 /* ################## INSERTAR ADMIN A DB PERO PRIMERO SE CONSULTA QUE NO EXISTA ######### */
 if ($_POST['registro'] == 'crear') {
     // die(json_encode($_POST));
-    
-    
-        try {
 
 
-            $stmt = $conn->prepare("INSERT INTO registrados(nombre_registrado, apellido_registrado, email_registrado, fecha_registro, pases_articulos, talleres_registrados, regalo, total_pagado, pagado) VALUES (?,?,?,NOW(),?,?,?,?,1)");
-            $stmt->bind_param("sssssis", $nombre, $apellido, $email, $pedidos, $eventos_formateados, $regalo, $total);
-            $stmt->execute();
-            if ($stmt->affected_rows) {
-                $respuesta = array(
-                    'respuesta' => 'exito',
-                    'id_insertado' => $stmt->insert_id,
-                    'nombre' => $nombre,
-                    'email' => $email,
-                    'apellido' => $apellido
-                );
-            }else{
-                $respuesta = array(
-                    'respuesta' => 'error'
-                );
-            }
+    try {
 
-            $stmt->close();
-            $conn->close();
-        } catch (\Exception $e) {
+
+        $stmt = $conn->prepare("INSERT INTO registrados(nombre_registrado, apellido_registrado, email_registrado, fecha_registro, pases_articulos, talleres_registrados, regalo, total_pagado, pagado) VALUES (?,?,?,NOW(),?,?,?,?,1)");
+        $stmt->bind_param("sssssis", $nombre, $apellido, $email, $pedidos, $eventos_formateados, $regalo, $total);
+        $stmt->execute();
+        if ($stmt->affected_rows) {
             $respuesta = array(
-                'respuesta' => 'Error',
-                'Error' => $e->getMessage()
+                'respuesta' => 'exito',
+                'id_insertado' => $stmt->insert_id,
+                'nombre' => $nombre,
+                'email' => $email,
+                'apellido' => $apellido
+            );
+        } else {
+            $respuesta = array(
+                'respuesta' => 'error'
             );
         }
-   
+
+        $stmt->close();
+        $conn->close();
+    } catch (\Exception $e) {
+        $respuesta = array(
+            'respuesta' => 'Error',
+            'Error' => $e->getMessage()
+        );
+    }
+
     die(json_encode($respuesta));
 }
 
