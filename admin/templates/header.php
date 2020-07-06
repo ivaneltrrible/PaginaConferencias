@@ -32,6 +32,8 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="css/skins/_all-skins.min.css">
+  <!-- Morris charts -->
+  <link rel="stylesheet" href="bower_components/morris.js/morris.css">
 
   <!-- Estilos Propios -->
   <link rel="stylesheet" href="css/admin.css">

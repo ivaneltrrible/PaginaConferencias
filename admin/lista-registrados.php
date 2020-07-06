@@ -135,7 +135,7 @@ include_once 'templates/navegacion.php';
                                         <td>
                                             <a href="editar-registrado.php?id=<?php echo $registrado['id_registrado'] ?>" class="btn bg-orange btn-flat margin"><i class="fa fa-pencil"></i>
                                             </a>
-                                            <a href="#" class="btn bg-maroon btn-flat margin borrar_registro" data-id="<?php echo $registrado['id_registrado']; ?>" data-tipo="registrado"><i class="fa fa-trash"></i>
+                                            <a href="#" class="btn bg-maroon btn-flat margin borrar_registro" data-id="<?php echo $registrado['id_registrado']; ?>" data-tipo="registro"><i class="fa fa-trash"></i>
                                             </a>
                                         </td>
                                     </tr>

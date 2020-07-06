@@ -8,7 +8,7 @@
            <p><?php echo $_SESSION['nombre']; ?></p>
            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
          </div>
-       </div>
+       </div><!--  -->
        <!-- search form -->
        <form action="#" method="get" class="sidebar-form">
          <div class="input-group">
@@ -31,7 +31,7 @@
              </span>
            </a>
            <ul class="treeview-menu">
-             <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard</a></li>
+             <li><a href="dashboard.php"><i class="fa fa-circle-o"></i> Dashboard</a></li>
            </ul>
          </li>
          <!-- Creacion de Eventos y ver Todos -->

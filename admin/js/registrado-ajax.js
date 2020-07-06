@@ -63,7 +63,7 @@ $(document).ready(() => {
         swalWithBootstrapButtons
             .fire({
                 title: 'Eliminar Categoria',
-                text: '¿Estas seguro de eliminar esta Categoria?',
+                text: '¿Estas seguro de eliminar este Registro?',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Si, Eliminar',
@@ -79,7 +79,7 @@ $(document).ready(() => {
                         type: 'post',
                         url: `modelo-${tipo}.php`,
                         data: {
-                            id,
+                            id_registrado: id,
                             registro: 'eliminar',
                         },
                         dataType: 'json',
@@ -90,7 +90,7 @@ $(document).ready(() => {
                             if (resultado.respuesta === 'exitoso') {
                                 swalWithBootstrapButtons.fire(
                                     'Eliminado!',
-                                    'La categoria se elimino de manera correcta',
+                                    'El Registro se elimino de manera correcta',
                                     'success',
                                 );
                                 /* ## SE REMUEVE ELEMENTO TR DEL DOM ## */
